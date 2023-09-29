@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/css/normalize.css" />
+    <link rel="stylesheet" href="./Assets/css/style.css" />
+    <title>Javascript Quiz</title>
+  </head>
+  <body>
+    <!-- Window Header -->
+    <header>
+      <a>View High Scores</a>
+      <h1></h1>
+      <!-- Can place a header here if desired-->
+      <h3 id="Timer-Text">Time : 0</h3>
+    </header>
+
+    <main>
+      <!-- Main Header -->
+      <h2 id="Header-Text">Code Quiz Challenge</h2>
+
+      <!-- Landing Page -->
+      <div id="Landing-Page">
+        <p>
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your time by
+          ten seconds!
+        </p>
+        <button class="button-style" id="Start-Quiz-Button">Start Quiz</button>
+      </div>
+
+      <!-- Question Page-->
+      <div id="Questions-Page">
+        <button class="button-style" data-answer=""></button>
+        <button class="button-style" data-answer=""></button>
+        <button class="button-style" data-answer=""></button>
+        <button class="button-style" data-answer=""></button>
+      </div>
+
+      <!-- Results page -->
+      <div id="Results-Page">
+        <p>Your final score is</p>
+        <form class="sumbit-form">
+          <p>Enter initials:</p>
+          <input type="text" id="initials" placeholder="" />
+          <input class="button-style" id="Submit-Score-Button" type="submit" />
+        </form>
+      </div>
+
+      <!-- Main Footer -->
+      <footer id="Result-Box">
+        <h3>CORRECT!</h3>
+      </footer>
+    </main>
+
+    <script src="./Assets/scripts/questions.js"></script>
+    <script src="./Assets/scripts/script.js"></script>
+  </body>
+</html>
