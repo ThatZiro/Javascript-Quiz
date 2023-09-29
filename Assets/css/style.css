@@ -1,0 +1,161 @@
+/* Global */
+:root {
+  --accentColor: #482375;
+  --accentColorLight: #773ac2;
+  font-size: 12px;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  position: relative;
+}
+/* Window Header */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+header * {
+  font-size: 4rem;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+  text-wrap: nowrap;
+}
+header a {
+  font-size: 3rem;
+}
+header h3 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+/* Main Header */
+main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-top: 250px;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+#Landing-Page {
+  display: block; /* Toggle */
+  margin: 0px auto;
+  width: 50%;
+}
+#Landing-Page p {
+  font-size: 2rem;
+  text-align: center;
+}
+#Landing-Page button {
+  display: block;
+  background-color: var(--accentColor);
+  height: 40px;
+  width: 100px;
+  margin: 10px auto;
+}
+#Questions-Page {
+  display: block; /* Toggle */
+  width: 25%;
+}
+#Questions-Page button {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 50px;
+  text-align: start;
+  font-size: 2rem;
+  padding: 10px;
+}
+#Results-Page {
+  display: block; /* Toggle */
+  width: 25%;
+}
+#Results-Page {
+  margin-bottom: 20px;
+  text-align: start;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+#Results-Page form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-style {
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--accentColor);
+  color: white;
+  transition: all ease-in 0.2s;
+}
+.button-style:hover {
+  background-color: var(--accentColorLight);
+  transition: all ease-in 0.2s;
+  transform: scale(1.05);
+}
+
+/* Main Footer */
+footer {
+  color: #dfdbd8;
+  text-align: left;
+  width: 50%;
+  border-top: 3px solid #dfdbd8;
+  font-size: 2rem;
+}
+
+footer h3 {
+  margin-left: 5px;
+  margin-top: 10px;
+  transition: All ease-in 0.5s;
+}
+
+/* Landing Page */
+#HIDDEN {
+  display: none;
+}
+/*TODO Effect Applies When Text Fades Away*/
+/* 
+footer h3 { 
+  margin-left: 50px;
+  opacity: 0%;
+} 
+*/
+
+/*======================================================================*/
+/*============================= Media Queries ==========================*/
+/*======================================================================*/
+
+@media screen and (max-width: 1200px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+}
