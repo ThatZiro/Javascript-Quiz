@@ -7,7 +7,7 @@ var headerText = document.querySelector("#Header-Text");
 var landingPage = document.querySelector("#Landing-Page");
 var questionPage = document.querySelector("#Questions-Page");
 var resultsPage = document.querySelector("#Results-Page");
-var resultBox = document.querySelector("#Result-Box");
+var messageBox = document.querySelector("#Message-Box");
 var timerText = document.querySelector("Timer-Text");
 
 //Buttons
@@ -17,10 +17,12 @@ var answers = document.querySelectorAll("#Questions-Page button");
 
 //Answers
 var answerOne = answers.chi;
+
 //Questions
 var allQuestions = javascriptQuestions; // List of all questions that havn't been played
 var currentQuestion; // Our current question thats on screen
 var questionCount = 5; // total amount of questions that need answered
+var timer = 60;
 
 //====================================================================================================//
 //===========================================[ Functions ]============================================//
@@ -35,6 +37,7 @@ function LoadPage(page) {
       ToggleElement(landingPage, true);
       break;
     case "question":
+      questionCount = 5;
       ToggleElement(questionPage, true);
       break;
     case "results":
@@ -59,21 +62,28 @@ function StartQuiz() {
   LoadPage("question");
 
   //Get Random Question
-  currentQuestion = GetRandomQuestion();
-
-  BuildQuestion(currentQuestion);
+  LoadQuestion();
+  //   StartTimer();
 }
 
 function BuildQuestion(question) {
   LoadHeader(question.Question);
 
   console.log(answers);
+  var shuffledAnswers = ShuffleArray(question.allAnswers);
+
   for (let i = 0; i < answers.length; i++) {
     var a = answers[i];
-    var questionAnswer = question.allAnswers[i];
+    var questionAnswer = shuffledAnswers[i];
     a.textContent = i + 1 + ". " + questionAnswer;
     a.setAttribute("data-answer", questionAnswer);
   }
+}
+
+function LoadQuestion() {
+  questionCount--;
+  currentQuestion = GetRandomQuestion();
+  BuildQuestion(currentQuestion);
 }
 
 function CheckAnswer(event) {
@@ -81,13 +91,18 @@ function CheckAnswer(event) {
 
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
-    console.log("Correct!");
+    ShowMessage("Correct!", "#90FDB9");
   } else {
-    console.log("Incorrect!");
+    ShowMessage("Incorrect!", "#FA7C68");
   }
 
-  //Load Next Question
+  if (questionCount > 0) {
+    LoadQuestion();
+  } else {
+    LoadPage("results");
+  }
 }
+// === Timer ===
 
 function SubmitHighscore() {
   // TODO Create Database Entry
@@ -96,6 +111,16 @@ function SubmitHighscore() {
 
 // === Untility ===
 
+function ShowMessage(text, color) {
+  ToggleElement(messageBox, true);
+  messageBox.children[0].textContent = text;
+  messageBox.children[0].setAttribute("style", `color: ${color}`);
+
+  setTimeout(HideMessage, 1000);
+}
+function HideMessage() {
+  ToggleElement(messageBox, false);
+}
 function GetRandomQuestion() {
   let r = Math.floor(Math.random() * allQuestions.length);
   let q = allQuestions[r];
@@ -109,6 +134,17 @@ function ToggleElement(element, status) {
   } else {
     element.setAttribute("style", "display: none");
   }
+}
+
+function ShuffleArray(array) {
+  var newArray = [];
+  var count = array.length;
+  for (let i = 0; i < count; i++) {
+    let r = Math.floor(Math.random() * array.length);
+    newArray.push(array[r]);
+    array.splice(r, 1);
+  }
+  return newArray;
 }
 //====================================================================================================//
 //===========================================[ Events ]===============================================//
@@ -126,5 +162,5 @@ submitScoreButton.addEventListener("click", SubmitHighscore);
 //===========================================[ Running Logic ]========================================//
 //====================================================================================================//
 
-ToggleElement(resultBox, false);
+ToggleElement(messageBox, false);
 LoadPage("landing");
