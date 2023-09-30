@@ -1,5 +1,17 @@
-/* Global */
+/*====================================================================================================*/
+/*===========================================[ Global ]===============================================*/
+/*====================================================================================================*/
 :root {
+  /*Color Pallete*/
+
+  --mainColor: #f0dc55;
+  --contractColor: hsl(213, 43%, 50%);
+  --lighterColor: #e8dee6;
+  --lightColor: #b2afb5;
+  --darkColorShade1: #111111;
+  --darkColorShade2: #191919;
+  --darkColorShade3: #222222;
+
   --accentColor: #482375;
   --accentColorLight: #773ac2;
   --accentColorLightest: #d9d2e8;
@@ -14,30 +26,61 @@
 body {
   position: relative;
 }
-/* Window Header */
+
+/*====================================================================================================*/
+/*===========================================[ Header ]===============================================*/
+/*====================================================================================================*/
+
 header {
-  position: absolute;
-  top: 0;
-  left: 0;
+  background-color: var(--darkColorShade1);
+  height: 200px;
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: stretch;
   margin: 0px;
+  gap: 100px;
 }
 
 header * {
-  font-size: 4rem;
-  width: 100%;
-  margin: 0px;
-  text-align: center;
-  text-wrap: nowrap;
+  padding: 0px 50px;
+  margin: 0;
 }
+header img {
+  margin: 0;
+  padding: 0;
+  height: 90%;
+}
+header nav {
+  align-self: center;
+}
+
 header a {
-  font-size: 3rem;
+  position: relative;
+  font-size: 6rem;
+  padding: 10px;
+  margin: 50px;
+  color: var(--lightColor);
+  transition: all ease-in 0.5s;
 }
-header h3 {
-  font-size: 3rem;
-  font-weight: normal;
+header a:hover {
+  color: var(--mainColor);
+}
+
+header a::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  width: 0%;
+  height: 100%;
+  border-bottom: 5px solid var(--mainColor);
+  transform-origin: center;
+  transition: all ease-in 0.3s;
+}
+header a:hover::before {
+  width: 100%;
+  left: 0;
 }
 
 /* Main Header */
@@ -175,21 +218,3 @@ footer h3 {
 /*======================================================================*/
 /*============================= Media Queries ==========================*/
 /*======================================================================*/
-
-@media screen and (max-width: 1200px) {
-  :root {
-    font-size: 8px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  :root {
-    font-size: 6px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  header {
-    flex-direction: column;
-  }
-}
