@@ -72,7 +72,7 @@ h2 {
 }
 #Questions-Page {
   display: block; /* Toggle */
-  width: 25%;
+  width: 50%;
 }
 #Questions-Page button {
   width: 100%;
@@ -104,14 +104,15 @@ h2 {
 #Highscore-Page {
   position: relative;
   display: block; /* Toggle */
-  margin: 0pzx auto;
-  width: 25%;
+  margin: 0px auto;
+  width: 35%;
   font-size: 2rem;
 }
 
-#Highscore-Page div {
+#Highscore-Display {
   display: flex;
   flex-direction: column;
+  min-height: 50px;
   gap: 10px;
   margin-bottom: 40px;
 }
@@ -128,9 +129,8 @@ h2 {
 
 #Highscore-Page p {
   height: 20px;
-  padding: 5px;
+  padding: 10px;
   background-color: var(--accentColorLightest);
-  background-blend-mode: ;
 }
 .button-style {
   padding: 5px;
