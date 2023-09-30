@@ -10,7 +10,7 @@
   <body>
     <!-- Window Header -->
     <header>
-      <a>View High Scores</a>
+      <a id="HighScores-Button">View High Scores</a>
       <h1></h1>
       <!-- Can place a header here if desired-->
       <h3 id="Timer-Text">Time : 0</h3>
@@ -43,9 +43,23 @@
         <p>Your final score is</p>
         <form class="sumbit-form">
           <p>Enter initials:</p>
-          <input type="text" id="initials" placeholder="" />
+          <input type="text" id="Initials-Input" placeholder="" />
           <input class="button-style" id="Submit-Score-Button" type="submit" />
         </form>
+      </div>
+
+      <!-- Highscore Page -->
+      <div id="Highscore-Page">
+        <div>
+          <p>1. AB - 22</p>
+          <p>2. BB - 13</p>
+          <p></p>
+          <p></p>
+        </div>
+        <button class="button-style" id="Back-Button">Go Back</button>
+        <button class="button-style" id="Clear-Button">
+          Clear High Scores
+        </button>
       </div>
 
       <!-- Main Footer -->

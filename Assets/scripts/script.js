@@ -7,13 +7,19 @@ var headerText = document.querySelector("#Header-Text");
 var landingPage = document.querySelector("#Landing-Page");
 var questionPage = document.querySelector("#Questions-Page");
 var resultsPage = document.querySelector("#Results-Page");
+var highscorePage = document.querySelector("#Highscore-Page");
 var messageBox = document.querySelector("#Message-Box");
-var timerText = document.querySelector("Timer-Text");
+var timerText = document.querySelector("#Timer-Text");
 
+//Inputs
+var initialInput = document.querySelector("#Initials-Input");
 //Buttons
+var highscoresButton = document.querySelector("#HighScores-Button");
 var startQuizButton = document.querySelector("#Start-Quiz-Button");
 var submitScoreButton = document.querySelector("#Submit-Score-Button");
 var answers = document.querySelectorAll("#Questions-Page button");
+var backButton = document.querySelector("#Back-Button");
+var clearButton = document.querySelector("#Clear-Button");
 
 //Answers
 var answerOne = answers.chi;
@@ -23,7 +29,10 @@ var allQuestions = javascriptQuestions; // List of all questions that havn't bee
 var currentQuestion; // Our current question thats on screen
 var questionCount = 5; // total amount of questions that need answered
 var timer = 60;
+var score = 0;
 
+//Database
+var highscores = [];
 //====================================================================================================//
 //===========================================[ Functions ]============================================//
 //====================================================================================================//
@@ -41,7 +50,14 @@ function LoadPage(page) {
       ToggleElement(questionPage, true);
       break;
     case "results":
+      score = timer;
+      LoadHeader("All Done!");
+      resultsPage.children[0].textContent = "Your final score was " + score;
+      StopTimer();
       ToggleElement(resultsPage, true);
+      break;
+    case "highscore":
+      ToggleElement(highscorePage, true);
       break;
   }
 }
@@ -50,6 +66,14 @@ function HideAllPages() {
   ToggleElement(landingPage, false);
   ToggleElement(questionPage, false);
   ToggleElement(resultsPage, false);
+  ToggleElement(highscorePage, false);
+}
+
+function LoadHighscorePage() {
+  LoadPage("highscore");
+}
+function LoadHomePage() {
+  LoadPage("landing");
 }
 
 function LoadHeader(text) {
@@ -58,18 +82,19 @@ function LoadHeader(text) {
 
 // === Event Handlers ===
 function StartQuiz() {
+  //Initilize Score
+  score = 0;
   //Load Page
   LoadPage("question");
 
   //Get Random Question
   LoadQuestion();
-  //   StartTimer();
+  StartTimer(60);
 }
 
 function BuildQuestion(question) {
   LoadHeader(question.Question);
 
-  console.log(answers);
   var shuffledAnswers = ShuffleArray(question.allAnswers);
 
   for (let i = 0; i < answers.length; i++) {
@@ -93,6 +118,8 @@ function CheckAnswer(event) {
   if (choice == currentQuestion.correctAnswer) {
     ShowMessage("Correct!", "#90FDB9");
   } else {
+    timer -= 10; //Penalty
+    timerText.textContent = "Time : " + timer;
     ShowMessage("Incorrect!", "#FA7C68");
   }
 
@@ -103,10 +130,71 @@ function CheckAnswer(event) {
   }
 }
 // === Timer ===
+function StartTimer(time) {
+  timerText.setAttribute("style", "visibility:visible");
+  timer = time;
+  timerText.textContent = "Time : " + timer;
+  timerText.setAttribute("style", "height:100%");
+  var tick = setInterval(function () {
+    timer--;
+    timerText.textContent = "Time : " + timer;
+    if (timer <= 0 && score == 0) {
+      EndTimer();
+      clearInterval(tick);
+    }
+  }, 1000);
+}
+function StopTimer() {
+  timerText.setAttribute("style", "visibility:hidden");
+  timer = 0;
+  timerText.textContent = "Time : " + timer;
+}
+function EndTimer() {
+  LoadPage("result");
+  ShowMessage("Times Up!", "black");
+}
 
-function SubmitHighscore() {
-  // TODO Create Database Entry
-  console.log("TODO : Create Highscore");
+function SubmitHighscore(event) {
+  event.preventDefault();
+  if (initialInput.value == "") {
+    ShowMessage("Please Insert your Initials", "black");
+    return;
+  }
+
+  var initials = initialInput.value;
+  initialInput.value = "";
+  var newHighscore = {
+    name: initials,
+    score: score,
+  };
+
+  AddHighscore(newHighscore);
+}
+// === Database ===
+function AddHighscore(newData) {
+  highscores.push(newData);
+  console.log(highscores);
+  AddData(highscores);
+}
+
+function ClearHighscores() {
+  ClearData();
+  highscores = [];
+  ShowMessage("highscores cleared...", "#767A76");
+}
+
+function AddData(scoreData) {
+  var jsonData = JSON.stringify(scoreData);
+  localStorage.setItem("highscores", jsonData);
+}
+
+function ClearData() {
+  localStorage.clear();
+}
+
+function GetData() {
+  var data = localStorage.getItem("highscores");
+  return JSON.parse(data);
 }
 
 // === Untility ===
@@ -158,9 +246,14 @@ answers.forEach((answer) => {
 
 submitScoreButton.addEventListener("click", SubmitHighscore);
 
+backButton.addEventListener("click", LoadHomePage);
+clearButton.addEventListener("click", ClearData);
+
+highscoresButton.addEventListener("click", LoadHighscorePage);
 //====================================================================================================//
 //===========================================[ Running Logic ]========================================//
 //====================================================================================================//
 
 ToggleElement(messageBox, false);
+timerText.setAttribute("style", "visibility:hidden");
 LoadPage("landing");
