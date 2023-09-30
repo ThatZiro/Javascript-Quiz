@@ -2,6 +2,7 @@
 :root {
   --accentColor: #482375;
   --accentColorLight: #773ac2;
+  --accentColorLightest: #d9d2e8;
   font-size: 12px;
 }
 
@@ -97,7 +98,40 @@ h2 {
   align-items: center;
   gap: 10px;
 }
+#Initials-Input {
+  background-color: var(--accentColorLightest);
+}
+#Highscore-Page {
+  position: relative;
+  display: block; /* Toggle */
+  margin: 0pzx auto;
+  width: 25%;
+  font-size: 2rem;
+}
 
+#Highscore-Page div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+#Highscore-Page button:nth-child(2) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+#Highscore-Page button:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#Highscore-Page p {
+  height: 20px;
+  padding: 5px;
+  background-color: var(--accentColorLightest);
+  background-blend-mode: ;
+}
 .button-style {
   padding: 5px;
   border-radius: 10px;
