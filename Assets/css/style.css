@@ -6,6 +6,7 @@
   /*Color Pallete*/
 
   --mainColor: #f0dc55;
+  --mainColorAlt: #ffe945;
   --contrastColor: #497ab6;
   --lighterColor: #e8dee6;
   --lightColor: #b2afb5;
@@ -59,7 +60,7 @@ header nav {
 /*Style Header and Footer*/
 .linkStyle a {
   position: relative;
-  font-size: 6rem;
+  font-size: 4rem;
   padding: 10px;
   margin: 50px;
   color: var(--lightColor);
@@ -104,7 +105,7 @@ section p {
   background-color: var(--lighterColor);
   flex-direction: column;
   justify-content: space-around;
-  padding: 50px 500px;
+  padding: 50px 20%;
 }
 
 #Call-To-Action * {
@@ -137,21 +138,31 @@ section p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
   flex: 2;
 }
 #How-To-Play img {
   background-color: white;
   max-width: 100%;
   max-height: 100%;
+  border: 10px solid var(--darkColorShade1);
 }
 #How-To-Play h2 {
   text-align: start;
 }
 
-#How- #Why-Javascript {
+#Why-Javascript {
+  height: 500px;
   border-bottom: 20px solid var(--darkColorShade3);
   background-color: var(--contrastColor);
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 50px 20%;
+  color: var(--lightColor);
+}
+
+#Why-Javascript * {
+  text-align: center;
 }
 
 main {
@@ -172,7 +183,7 @@ h2 {
 }
 #Landing-Page button {
   display: block;
-  background-color: var(--accentColor);
+  background-color: var(--mainColorAlt);
   height: 40px;
   width: 100px;
   margin: 10px auto;
@@ -250,7 +261,7 @@ h2 {
   transition: all ease-in 0.2s;
 }
 .button-style:hover {
-  background-color: var(--accentColorLight);
+  background-color: var(--mainColorAlt);
   transition: all ease-in 0.2s;
   transform: scale(1.05);
 }
