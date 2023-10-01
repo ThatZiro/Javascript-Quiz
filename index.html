@@ -14,18 +14,24 @@
   </head>
   <body>
     <!--=============================================-->
-    <!--------------- Window Header ------------------->
+    <!-------------------- Header --------------------->
     <!--=============================================-->
     <header>
       <img src="./Assets/images/Logo.png" alt="" />
-      <nav class="linkStyle">
+      <nav class="linkStyle" style="display: block">
+        <!-- Hide When Question-->
         <a>Home</a>
         <a>Study</a>
         <a id="HighScores-Button">High Scores</a>
       </nav>
     </header>
     <!-- <h3 id="Timer-Text">Time : 0</h3> -->
-    <main>
+    <!--=============================================-->
+    <!-------------------- Home Page Section ---------->
+    <!--=============================================-->
+    <main style="display: none">
+      <!-- Hide When Question-->
+      <!-- Hide When Score-->
       <!-- Call To Action -->
       <section id="Call-To-Action">
         <h2 id="Header-Text">Code Quiz Challenge</h2>
@@ -70,61 +76,227 @@
           of inspiration.
         </p>
       </section>
-      <!-- Question Page-->
-      <!-- <div id="Questions-Page">
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-      </div> -->
-
-      <!-- Results page -->
-      <!-- <div id="Results-Page">
-        <p>Your final score is</p>
-        <form class="sumbit-form">
-          <p>Enter initials:</p>
-          <input type="text" id="Initials-Input" placeholder="" />
-          <input class="button-style" id="Submit-Score-Button" type="submit" />
-        </form>
-      </div> -->
-
-      <!-- Highscore Page -->
-      <!-- <div id="Highscore-Page">
-        <div id="Highscore-Display">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
-        <button class="button-style" id="Back-Button">Go Back</button>
-        <button class="button-style" id="Clear-Button">
-          Clear High Scores
-        </button>
-      </div> -->
-
-      <!-- Main Footer -->
-      <!-- <section id="Message-Box">
-        <h3>CORRECT!</h3>
-      </section> -->
     </main>
-
+    <!--=============================================-->
+    <!------------------- Question Page --------------->
+    <!--=============================================-->
+    <main style="display: none">
+      <section id="Question">
+        <!-- Hide When !Question-->
+        <div id="Timer">
+          <p>Time Remaining</p>
+          <p>1m 23s</p>
+        </div>
+        <h2>What will be the output of the following code?</h2>
+        <div class="question-content">
+          <div>
+            <button class="button-style">
+              <h3>A.</h3>
+              <p>Equals</p>
+            </button>
+            <button class="button-style">
+              <h3>B.</h3>
+              <p>Not equals</p>
+            </button>
+            <button class="button-style">
+              <h3>C.</h3>
+              <p>null</p>
+            </button>
+            <button class="button-style">
+              <h3>D.</h3>
+              <p>undefined</p>
+            </button>
+          </div>
+          <figure>
+            <img src="./Assets/images/Question-Exampled-Image.png" />
+            <button class="button-style" id="Skip-Question-Button">
+              Skip Question
+            </button>
+          </figure>
+        </div>
+      </section>
+    </main>
+    <!--=============================================-->
+    <!------------------- Score Page ------------------>
+    <!--=============================================-->
+    <main style="display: none">
+      <section id="Score">
+        <!-- Hide When !Score-->
+        <div class="score-display">
+          <div class="stats">
+            <h2>All Done!</h2>
+            <h3>Amswered</h3>
+            <h3>36</h3>
+            <h3>Incorrect</h3>
+            <h3>-12</h3>
+            <h3>Skipped</h3>
+            <h3>4</h3>
+            <h3>Score</h3>
+            <h3>240</h3>
+          </div>
+          <form>
+            <h4>Score Posted!</h4>
+            <input type="text" placeholder="name here" />
+            <button class="button-style" id="Submit-Score-Button">
+              Submit
+            </button>
+          </form>
+          <div class="buttons">
+            <button class="button-style" id="Play-Again-Button">
+              Play Again
+            </button>
+            <button class="button-style" id="Review-Button">Review</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--=============================================-->
+    <!------------------- HighScore Page -------------->
+    <!--=============================================-->
+    <main style="display: block">
+      <section id="HighScore">
+        <!-- Hide When !Score-->
+        <div class="high-score-display" style="display: none">
+          <h2>High Scores</h2>
+          <div class="highscores">
+            <div>
+              <p>01</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div>
+              <p>02</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div>
+              <p>03</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div>
+              <p>04</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div>
+              <p>05</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div>
+              <p>06</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div style="visibility: hidden">
+              <p>07</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div style="visibility: hidden">
+              <p>08</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div style="visibility: hidden">
+              <p>09</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+            <div style="visibility: hidden">
+              <p>10</p>
+              <p>Brandon</p>
+              <p>3600</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="button-style" id="GoHome-Button">Go Home</button>
+            <button class="button-style" id="Clear-Scores-Button">
+              Clear Scores
+            </button>
+          </div>
+        </div>
+        <div class="high-score-display" style="display: flex">
+          <h2>Clear High Scores</h2>
+          <div class="confirm-clear-scores-text">
+            <p>Are you sure?</p>
+            <p>
+              High scores will be permanently deleted from the game and cannot
+              be recovered
+            </p>
+          </div>
+          <div class="buttons">
+            <button class="button-style" id="Confirm-Clear-Scores-Button">
+              Confirm
+            </button>
+            <button class="button-style" id="Cancel-Clear-Scores-Button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--=============================================-->
+    <!------------------- Review Page --------------->
+    <!--=============================================-->
+    <main style="display: none">
+      <section class="review-navigation">
+        <button class="button-style" id="Previous-Question-Button">
+          PREVIOUS
+        </button>
+        <h3>Question 1</h3>
+        <h3>Incorrect</h3>
+        <button class="button-style" id="Next-Question-Button">NEXT</button>
+      </section>
+      <section id="Review" style="display: flex">
+        <!-- Hide When !Question-->
+        <h2>What will be the output of the following code?</h2>
+        <div class="question-content">
+          <div>
+            <button class="button-style">
+              <h3>A.</h3>
+              <p>Equals</p>
+              <p class="result" style="color: red">✖</p>
+            </button>
+            <button class="button-style">
+              <h3>B.</h3>
+              <p>Not equals</p>
+              <p class="result" style="color: green">✔</p>
+            </button>
+            <button class="button-style">
+              <h3>C.</h3>
+              <p>null</p>
+              <p class="result"></p>
+            </button>
+            <button class="button-style">
+              <h3>D.</h3>
+              <p>undefined</p>
+              <p class="result"></p>
+            </button>
+          </div>
+          <figure>
+            <img src="./Assets/images/Question-Exampled-Image.png" />
+            <button class="button-style" id="End-Review-Button">
+              End Review
+            </button>
+          </figure>
+        </div>
+      </section>
+    </main>
     <!--=============================================-->
     <!-------------------- Footer---------------------->
     <!--=============================================-->
     <footer>
-      <ul class="footer-social">
+      <ul class="footer-social" style="display: flex">
+        <!-- Flex When Question-->
         <a href="#" class="fa fa-github"></a>
         <a href="#" class="fa fa-twitter"></a>
         <a href="#" class="fa fa-linkedin"></a>
         <a href="#" class="fa fa-instagram"></a>
       </ul>
-      <div class="footer-links">
+      <div class="footer-links" style="display: flex">
+        <!-- Flex When Question-->
         <ul class="linkStyle">
           <a href="#">Home</a>
           <a href="#">Study</a>
@@ -136,6 +308,9 @@
           <a href="#">Contact Me</a>
         </ul>
       </div>
+      <button class="button-style" id="Exit-Quiz-Button" style="display: none">
+        Exit Quiz
+      </button>
     </footer>
     <script src="./Assets/scripts/questions.js"></script>
   </body>
