@@ -2,30 +2,32 @@
 //===========================================[ Global Variables ]=====================================//
 //====================================================================================================//
 
-//Elements
-var headerText = document.querySelector("#Header-Text");
-var landingPage = document.querySelector("#Landing-Page");
-var questionPage = document.querySelector("#Questions-Page");
-var resultsPage = document.querySelector("#Results-Page");
-var highscorePage = document.querySelector("#Highscore-Page");
-var messageBox = document.querySelector("#Message-Box");
-var timerText = document.querySelector("#Timer-Text");
-var header = document.querySelector("header");
+//Pages
+var homePage = document.querySelector("#Page_Home");
+var questionPage = document.querySelector("#Page_Question");
+var scorePage = document.querySelector("#Page_Score");
+var highscoresPage = document.querySelector("#Page_Highscores");
+var reviewPage = document.querySelector("#Page_Review");
+var studyPage = document.querySelector("#Page_Study");
 
+//Navigation
+var homeNav = document.querySelectorAll(".Nav_Home");
+var studyNav = document.querySelectorAll(".Nav_Study");
+var highscoresNav = document.querySelectorAll(".Nav_Highscores");
 //Inputs
-var initialInput = document.querySelector("#Initials-Input");
+// var initialInput = document.querySelector("#Initials-Input");
 
 //Buttons
-var highscoresButton = document.querySelector("#HighScores-Button");
-var startQuizButton = document.querySelector("#Start-Quiz-Button");
-var submitScoreButton = document.querySelector("#Submit-Score-Button");
-var answerButtons = document.querySelectorAll("#Questions-Page button");
-var highscoreDisplays = document.querySelectorAll("#Highscore-Display p");
-var backButton = document.querySelector("#Back-Button");
-var clearButton = document.querySelector("#Clear-Button");
+// var highscoresButton = document.querySelector("#HighScores-Button");
+// var startQuizButton = document.querySelector("#Start-Quiz-Button");
+// var submitScoreButton = document.querySelector("#Submit-Score-Button");
+// var answerButtons = document.querySelectorAll("#Questions-Page button");
+// var highscoreDisplays = document.querySelectorAll("#Highscore-Display p");
+// var backButton = document.querySelector("#Back-Button");
+// var clearButton = document.querySelector("#Clear-Button");
 
 //Answers
-var answerOne = answerButtons.chi;
+// var answerOne = answerButtons.chi;
 
 //Questions
 var allQuestions = javascriptQuestions; // List of all questions that havn't been played
@@ -46,36 +48,48 @@ var highscores = [];
 function LoadPage(page) {
   HideAllPages();
   switch (page) {
-    case "landing":
-      ToggleElement(header, true);
-      LoadHeader("Coding Quiz Challenge");
-      ToggleElement(landingPage, true);
+    case "Home":
+      ToggleElement(homePage, true);
+      // ToggleElement(header, true);
+      // LoadHeader("Coding Quiz Challenge");
+      // ToggleElement(landingPage, true);
       break;
-    case "question":
-      questionCount = 5;
+    case "Question":
       ToggleElement(questionPage, true);
+      // questionCount = 5;
+      // ToggleElement(questionPage, true);
       break;
-    case "results":
-      score = timer;
-      LoadHeader("All Done!");
-      resultsPage.children[0].textContent = "Your final score was " + score;
-      StopTimer();
-      ToggleElement(resultsPage, true);
+    case "Score":
+      ToggleElement(scorePage, true);
+      // score = timer;
+      // LoadHeader("All Done!");
+      // resultsPage.children[0].textContent = "Your final score was " + score;
+      // StopTimer();
+      // ToggleElement(resultsPage, true);
       break;
-    case "highscore":
-      ToggleElement(header, false);
-      LoadHeader("High Scores");
-      BuildHighScoreDisplay();
-      ToggleElement(highscorePage, true);
+    case "Highscores":
+      ToggleElement(highscoresPage, true);
+      // ToggleElement(header, false);
+      // LoadHeader("High Scores");
+      // BuildHighScoreDisplay();
+      // ToggleElement(highscorePage, true);
       break;
+    case "Review": {
+      ToggleElement(reviewPage, true);
+    }
+    case "Study": {
+      ToggleElement(studyPage, true);
+    }
   }
 }
 
 function HideAllPages() {
-  ToggleElement(landingPage, false);
+  ToggleElement(homePage, false);
   ToggleElement(questionPage, false);
-  ToggleElement(resultsPage, false);
-  ToggleElement(highscorePage, false);
+  ToggleElement(scorePage, false);
+  ToggleElement(highscoresPage, false);
+  ToggleElement(reviewPage, false);
+  ToggleElement(studyPage, false);
 }
 
 function LoadHighscorePage() {
@@ -279,23 +293,40 @@ function ShuffleArray(array) {
 //====================================================================================================//
 //===========================================[ Events ]===============================================//
 //====================================================================================================//
-
-startQuizButton.addEventListener("click", StartQuiz);
-
-answerButtons.forEach((answer) => {
-  answer.addEventListener("click", CheckAnswer);
+//Navigation
+homeNav.forEach(function (element) {
+  element.addEventListener("click", function () {
+    LoadPage("Home");
+  });
+});
+studyNav.forEach(function (element) {
+  element.addEventListener("click", function () {
+    LoadPage("Study");
+  });
+});
+highscoresNav.forEach(function (element) {
+  element.addEventListener("click", function () {
+    LoadPage("Highscores");
+  });
 });
 
-submitScoreButton.addEventListener("click", SubmitHighscore);
+// startQuizButton.addEventListener("click", StartQuiz);
 
-backButton.addEventListener("click", LoadHomePage);
-clearButton.addEventListener("click", ClearHighscores);
+// answerButtons.forEach((answer) => {
+//   answer.addEventListener("click", CheckAnswer);
+// });
 
-highscoresButton.addEventListener("click", LoadHighscorePage);
+// submitScoreButton.addEventListener("click", SubmitHighscore);
+
+// backButton.addEventListener("click", LoadHomePage);
+// clearButton.addEventListener("click", ClearHighscores);
+
+// highscoresButton.addEventListener("click", LoadHighscorePage);
 //====================================================================================================//
 //===========================================[ Running Logic ]========================================//
 //====================================================================================================//
 
-ToggleElement(messageBox, false);
-timerText.setAttribute("style", "visibility:hidden");
-LoadPage("landing");
+LoadPage("Home");
+// ToggleElement(messageBox, false);
+// timerText.setAttribute("style", "visibility:hidden");
+// LoadPage("landing");

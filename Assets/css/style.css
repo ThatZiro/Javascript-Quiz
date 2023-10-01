@@ -104,10 +104,16 @@ section p {
   font-size: 3rem;
 }
 #Call-To-Action {
-  background-color: var(--lighterColor);
   flex-direction: column;
   justify-content: space-around;
   padding: 50px 20%;
+  color: var(--darkColorShade3);
+  background-image: linear-gradient(
+    to bottom,
+    var(--lighterColor),
+    var(--darkColorShade1)
+  );
+  background-size: contain;
 }
 
 #Call-To-Action * {
@@ -156,14 +162,18 @@ section p {
 #Why-Javascript {
   height: 500px;
   border-bottom: 20px solid var(--darkColorShade3);
-  background-color: var(--contrastColor);
-  flex-direction: column;
-  justify-content: space-around;
   padding: 50px 20%;
   color: var(--lightColor);
+  background-image: url("../images/Score-Background.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 }
 
-#Why-Javascript * {
+#Why-Javascript div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -268,14 +278,14 @@ section p {
 /*====================================================================================================*/
 
 #Score,
-#HighScore {
+#HighScore,
+#Study {
   width: 100%;
   height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--lightColor);
-  border-top: 20px solid var(--darkColorShade1);
   border-bottom: 20px solid var(--darkColorShade1);
   background-image: url("../images/Score-Background.png");
   background-repeat: no-repeat;
@@ -438,6 +448,14 @@ section p {
 
 #Exit-Quiz-Button {
   margin: 50px auto;
+}
+/*====================================================================================================*/
+/*=============================================[ Study ]==============================================*/
+/*====================================================================================================*/
+#Study h2 {
+  font-size: 12rem;
+  color: var(--mainColor);
+  font-family: "Irish Grover", cursive;
 }
 /*====================================================================================================*/
 /*===========================================[ Old ]=============================================*/
