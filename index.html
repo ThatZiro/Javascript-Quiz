@@ -80,8 +80,8 @@
     <!--=============================================-->
     <!------------------- Question Page --------------->
     <!--=============================================-->
-    <main>
-      <section id="Question" style="display: none">
+    <main style="display: none">
+      <section id="Question">
         <!-- Hide When !Question-->
         <div id="Timer">
           <p>Time Remaining</p>
@@ -119,8 +119,8 @@
     <!--=============================================-->
     <!------------------- Score Page ------------------>
     <!--=============================================-->
-    <main>
-      <section id="Score" style="display: none">
+    <main style="display: none">
+      <section id="Score">
         <!-- Hide When !Score-->
         <div class="score-display">
           <div class="stats">
@@ -153,10 +153,10 @@
     <!--=============================================-->
     <!------------------- HighScore Page -------------->
     <!--=============================================-->
-    <main>
-      <section id="HighScore" style="display: flex">
+    <main style="display: block">
+      <section id="HighScore">
         <!-- Hide When !Score-->
-        <div class="high-score-display">
+        <div class="high-score-display" style="display: none">
           <h2>High Scores</h2>
           <div class="highscores">
             <div>
@@ -216,6 +216,71 @@
               Clear Scores
             </button>
           </div>
+        </div>
+        <div class="high-score-display" style="display: flex">
+          <h2>Clear High Scores</h2>
+          <div class="confirm-clear-scores-text">
+            <p>Are you sure?</p>
+            <p>
+              High scores will be permanently deleted from the game and cannot
+              be recovered
+            </p>
+          </div>
+          <div class="buttons">
+            <button class="button-style" id="Confirm-Clear-Scores-Button">
+              Confirm
+            </button>
+            <button class="button-style" id="Cancel-Clear-Scores-Button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--=============================================-->
+    <!------------------- Review Page --------------->
+    <!--=============================================-->
+    <main style="display: none">
+      <section class="review-navigation">
+        <button class="button-style" id="Previous-Question-Button">
+          PREVIOUS
+        </button>
+        <h3>Question 1</h3>
+        <h3>Incorrect</h3>
+        <button class="button-style" id="Next-Question-Button">NEXT</button>
+      </section>
+      <section id="Review" style="display: flex">
+        <!-- Hide When !Question-->
+        <h2>What will be the output of the following code?</h2>
+        <div class="question-content">
+          <div>
+            <button class="button-style">
+              <h3>A.</h3>
+              <p>Equals</p>
+              <p class="result" style="color: red">✖</p>
+            </button>
+            <button class="button-style">
+              <h3>B.</h3>
+              <p>Not equals</p>
+              <p class="result" style="color: green">✔</p>
+            </button>
+            <button class="button-style">
+              <h3>C.</h3>
+              <p>null</p>
+              <p class="result"></p>
+            </button>
+            <button class="button-style">
+              <h3>D.</h3>
+              <p>undefined</p>
+              <p class="result"></p>
+            </button>
+          </div>
+          <figure>
+            <img src="./Assets/images/Question-Exampled-Image.png" />
+            <button class="button-style" id="End-Review-Button">
+              End Review
+            </button>
+          </figure>
         </div>
       </section>
     </main>
