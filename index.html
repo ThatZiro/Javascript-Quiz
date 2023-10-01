@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./Assets/css/normalize.css" />
     <link rel="stylesheet" href="./Assets/css/style.css" />
+
     <title>Javascript Quiz</title>
   </head>
   <body>
     <!-- Window Header -->
     <header>
       <img src="./Assets/images/Logo.png" alt="" />
-      <nav>
+      <nav class="linkStyle">
         <a>Home</a>
         <a>Study</a>
         <a id="HighScores-Button">High Scores</a>
@@ -74,11 +79,27 @@
       <section id="Message-Box">
         <h3>CORRECT!</h3>
       </section>
-
-      <footer>
-        
-      </footer>
+    </main>
+    <footer>
+      <ul class="footer-social">
+        <a href="#" class="fa fa-github"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+      </ul>
+      <div class="footer-links">
+        <ul class="linkStyle">
+          <a href="#">Home</a>
+          <a href="#">Study</a>
+          <a href="#">High Scores</a>
+        </ul>
+        <img src="./Assets/images/Logo-Alt.png" alt="" />
+        <ul class="linkStyle">
+          <a href="#">More Like This</a>
+          <a href="#">Contact Me</a>
+        </ul>
+      </div>
+    </footer>
     <script src="./Assets/scripts/questions.js"></script>
-    <!-- <script src="./Assets/scripts/script.js"></script> -->
   </body>
 </html>
