@@ -1,5 +1,19 @@
-/* Global */
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+/*====================================================================================================*/
+/*===========================================[ Global ]===============================================*/
+/*====================================================================================================*/
 :root {
+  /*Color Pallete*/
+
+  --mainColor: #f0dc55;
+  --mainColorAlt: #ffe945;
+  --contrastColor: #497ab6;
+  --lighterColor: #e8dee6;
+  --lightColor: #b2afb5;
+  --darkColorShade1: #111111;
+  --darkColorShade2: #191919;
+  --darkColorShade3: #222222;
+
   --accentColor: #482375;
   --accentColorLight: #773ac2;
   --accentColorLightest: #d9d2e8;
@@ -14,58 +28,162 @@
 body {
   position: relative;
 }
-/* Window Header */
+
+/*====================================================================================================*/
+/*===========================================[ Header ]===============================================*/
+/*====================================================================================================*/
+
 header {
-  position: absolute;
-  top: 0;
-  left: 0;
+  background-color: var(--darkColorShade1);
+  height: 200px;
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: stretch;
   margin: 0px;
+  gap: 100px;
 }
 
 header * {
-  font-size: 4rem;
-  width: 100%;
-  margin: 0px;
-  text-align: center;
-  text-wrap: nowrap;
+  padding: 0px 50px;
+  margin: 0;
 }
-header a {
-  font-size: 3rem;
+header img {
+  margin: 0;
+  padding: 0;
+  height: 90%;
 }
-header h3 {
-  font-size: 3rem;
-  font-weight: normal;
+header nav {
+  align-self: center;
 }
 
-/* Main Header */
+/*Style Header and Footer*/
+.linkStyle a {
+  position: relative;
+  font-size: 4rem;
+  padding: 10px;
+  margin: 50px;
+  color: var(--lightColor);
+  transition: all ease-in 0.5s;
+}
+.linkStyle a:hover {
+  color: var(--mainColor);
+}
+
+.linkStyle a::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  width: 0%;
+  height: 100%;
+  border-bottom: 5px solid var(--mainColor);
+  transform-origin: center;
+  transition: all ease-in 0.3s;
+}
+.linkStyle a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+/*====================================================================================================*/
+/*===========================================[ Home ]===============================================*/
+/*====================================================================================================*/
+section {
+  display: flex;
+  height: 750px;
+  margin: 0;
+  padding: 0;
+}
+section h2 {
+  font-size: 6rem;
+}
+section p {
+  font-size: 3rem;
+}
+#Call-To-Action {
+  background-color: var(--lighterColor);
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 50px 20%;
+}
+
+#Call-To-Action * {
+  text-align: center;
+}
+
+#Call-To-Action h2 {
+  font-family: "Irish Grover", cursive;
+}
+
+#Call-To-Action button {
+  margin: 0px auto;
+}
+#How-To-Play {
+  width: 100%;
+  color: var(--lightColor);
+  border-top: 20px solid var(--darkColorShade1);
+  border-bottom: 20px solid var(--darkColorShade1);
+  background-color: var(--darkColorShade2);
+  gap: 50px;
+}
+#How-To-Play div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 2;
+  padding-left: 50px;
+}
+#How-To-Play figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  flex: 2;
+}
+#How-To-Play img {
+  background-color: white;
+  max-width: 100%;
+  max-height: 100%;
+  border: 10px solid var(--darkColorShade1);
+}
+#How-To-Play h2 {
+  text-align: start;
+}
+
+#Why-Javascript {
+  height: 500px;
+  border-bottom: 20px solid var(--darkColorShade3);
+  background-color: var(--contrastColor);
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 50px 20%;
+  color: var(--lightColor);
+}
+
+#Why-Javascript * {
+  text-align: center;
+}
+
 main {
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
-  padding-top: 250px;
 }
 
 h2 {
   font-size: 3rem;
   text-align: center;
 }
-#Landing-Page {
-  display: block; /* Toggle */
-  margin: 0px auto;
-  width: 50%;
-}
+
 #Landing-Page p {
   font-size: 2rem;
   text-align: center;
 }
 #Landing-Page button {
   display: block;
-  background-color: var(--accentColor);
+  background-color: var(--mainColorAlt);
   height: 40px;
   width: 100px;
   margin: 10px auto;
@@ -135,24 +253,20 @@ h2 {
 .button-style {
   padding: 5px;
   border-radius: 10px;
-  background-color: var(--accentColor);
-  color: white;
+  font-size: 2rem;
+  background-color: var(--mainColor);
+  width: 200px;
+  height: 50px;
+  color: var(--darkColorShade1);
   transition: all ease-in 0.2s;
 }
 .button-style:hover {
-  background-color: var(--accentColorLight);
+  background-color: var(--mainColorAlt);
   transition: all ease-in 0.2s;
   transform: scale(1.05);
 }
 
 /* Main Footer */
-footer {
-  color: #dfdbd8;
-  text-align: left;
-  width: 50%;
-  border-top: 3px solid #dfdbd8;
-  font-size: 2rem;
-}
 
 footer h3 {
   margin-left: 5px;
@@ -163,6 +277,75 @@ footer h3 {
 /* Landing Page */
 #HIDDEN {
   display: none;
+}
+/*====================================================================================================*/
+/*===========================================[ Footer ]===============================================*/
+/*====================================================================================================*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--darkColorShade2);
+  border-top: 25px solid var(--mainColor);
+}
+.footer-social {
+  margin: 50px;
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  font-size: 8rem;
+  justify-content: center;
+}
+
+.footer-social a {
+  position: relative;
+  text-decoration: none;
+  color: var(--lighterColor);
+
+  transition: all ease-in 0.5s;
+}
+.footer-social a:hover {
+  color: #f0dc55;
+}
+.footer-social a::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  width: 0%;
+  height: 100%;
+  border-top: 5px solid var(--mainColor);
+  border-bottom: 5px solid var(--mainColor);
+  transition: all ease-in 0.3s;
+}
+.footer-social a:hover::after {
+  width: 100%;
+  left: 0;
+}
+.footer-links {
+  margin: 0px 200px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.footer-links ul {
+  display: flex;
+  justify-content: space-around;
+}
+footer ul {
+  flex-grow: 1;
+  align-self: center;
+}
+.footer-links ul a {
+  font-size: 3rem;
+  text-decoration: none;
+}
+footer img {
+  bottom: 0;
+  height: 200px;
 }
 /*TODO Effect Applies When Text Fades Away*/
 /* 
@@ -175,21 +358,3 @@ footer h3 {
 /*======================================================================*/
 /*============================= Media Queries ==========================*/
 /*======================================================================*/
-
-@media screen and (max-width: 1200px) {
-  :root {
-    font-size: 8px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  :root {
-    font-size: 6px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  header {
-    flex-direction: column;
-  }
-}
