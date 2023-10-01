@@ -219,7 +219,7 @@ function ExitQuiz() {
 
 function BuildScorePage() {
   //Show Form
-  ToggleElement(scoreForm, true);
+  ToggleElement(scoreForm, true, "flex");
   ToggleElement(scoreSubmittedText, false);
   //Set answered number
   answeredNumber.textContent = answeredQuestion.length;
@@ -402,6 +402,17 @@ function GetRandomQuestion() {
 function ToggleElement(element, status) {
   if (status) {
     element.setAttribute("style", "display: block");
+  } else {
+    element.setAttribute("style", "display: none");
+  }
+}
+function ToggleElement(element, status, string) {
+  if (status) {
+    if (string) {
+      element.setAttribute("style", `display: ${string}`);
+    } else {
+      element.setAttribute("style", `display: block`);
+    }
   } else {
     element.setAttribute("style", "display: none");
   }
