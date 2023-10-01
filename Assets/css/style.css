@@ -101,6 +101,22 @@ header nav {
   left: 25px;
   align-items: start;
 }
+.button-style {
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 2rem;
+  background-color: var(--mainColor);
+  width: 200px;
+  height: 50px;
+  color: var(--darkColorShade1);
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+.button-style:hover {
+  background-color: var(--mainColorAlt);
+  transition: all ease-in 0.2s;
+  transform: scale(1.05);
+}
 /*====================================================================================================*/
 /*===========================================[ Home ]===============================================*/
 /*====================================================================================================*/
@@ -479,124 +495,7 @@ section p {
   color: var(--mainColor);
   font-family: "Irish Grover", cursive;
 }
-/*====================================================================================================*/
-/*===========================================[ Old ]=============================================*/
-/*====================================================================================================*/
 
-main {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}
-
-h2 {
-  font-size: 3rem;
-  text-align: center;
-}
-
-#Landing-Page p {
-  font-size: 2rem;
-  text-align: center;
-}
-#Landing-Page button {
-  display: block;
-  background-color: var(--mainColorAlt);
-  height: 40px;
-  width: 100px;
-  margin: 10px auto;
-}
-#Questions-Page {
-  display: block; /* Toggle */
-  width: 50%;
-}
-#Questions-Page button {
-  width: 100%;
-  margin-bottom: 20px;
-  height: 50px;
-  text-align: start;
-  font-size: 2rem;
-  padding: 10px;
-}
-#Results-Page {
-  display: block; /* Toggle */
-  width: 25%;
-}
-#Results-Page {
-  margin-bottom: 20px;
-  text-align: start;
-  font-size: 2rem;
-  padding: 10px;
-}
-
-#Results-Page form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#Initials-Input {
-  background-color: var(--accentColorLightest);
-}
-#Highscore-Page {
-  position: relative;
-  display: block; /* Toggle */
-  margin: 0px auto;
-  width: 35%;
-  font-size: 2rem;
-}
-
-#Highscore-Display {
-  display: flex;
-  flex-direction: column;
-  min-height: 50px;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-#Highscore-Page button:nth-child(2) {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-#Highscore-Page button:nth-child(3) {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-#Highscore-Page p {
-  height: 20px;
-  padding: 10px;
-  background-color: var(--accentColorLightest);
-}
-.button-style {
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 2rem;
-  background-color: var(--mainColor);
-  width: 200px;
-  height: 50px;
-  color: var(--darkColorShade1);
-  transition: all ease-in 0.2s;
-  cursor: pointer;
-}
-.button-style:hover {
-  background-color: var(--mainColorAlt);
-  transition: all ease-in 0.2s;
-  transform: scale(1.05);
-}
-
-/* Main Footer */
-
-footer h3 {
-  margin-left: 5px;
-  margin-top: 10px;
-  transition: All ease-in 0.5s;
-}
-
-/* Landing Page */
-#HIDDEN {
-  display: none;
-}
 /*====================================================================================================*/
 /*===========================================[ Footer ]===============================================*/
 /*====================================================================================================*/
