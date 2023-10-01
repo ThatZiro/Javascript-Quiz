@@ -14,18 +14,21 @@
   </head>
   <body>
     <!--=============================================-->
-    <!--------------- Window Header ------------------->
+    <!-------------------- Header --------------------->
     <!--=============================================-->
     <header>
       <img src="./Assets/images/Logo.png" alt="" />
-      <nav class="linkStyle">
+      <nav class="linkStyle" style="display: none">
         <a>Home</a>
         <a>Study</a>
         <a id="HighScores-Button">High Scores</a>
       </nav>
     </header>
     <!-- <h3 id="Timer-Text">Time : 0</h3> -->
-    <main>
+    <!--=============================================-->
+    <!-------------------- Home Page Section ---------->
+    <!--=============================================-->
+    <main style="display: none">
       <!-- Call To Action -->
       <section id="Call-To-Action">
         <h2 id="Header-Text">Code Quiz Challenge</h2>
@@ -70,61 +73,54 @@
           of inspiration.
         </p>
       </section>
-      <!-- Question Page-->
-      <!-- <div id="Questions-Page">
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-        <button class="button-style" data-answer=""></button>
-      </div> -->
-
-      <!-- Results page -->
-      <!-- <div id="Results-Page">
-        <p>Your final score is</p>
-        <form class="sumbit-form">
-          <p>Enter initials:</p>
-          <input type="text" id="Initials-Input" placeholder="" />
-          <input class="button-style" id="Submit-Score-Button" type="submit" />
-        </form>
-      </div> -->
-
-      <!-- Highscore Page -->
-      <!-- <div id="Highscore-Page">
-        <div id="Highscore-Display">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
-        <button class="button-style" id="Back-Button">Go Back</button>
-        <button class="button-style" id="Clear-Button">
-          Clear High Scores
-        </button>
-      </div> -->
-
-      <!-- Main Footer -->
-      <!-- <section id="Message-Box">
-        <h3>CORRECT!</h3>
-      </section> -->
     </main>
 
+    <main>
+      <section id="Question">
+        <div id="Timer">
+          <p>Time Remaining</p>
+          <p>1m 23s</p>
+        </div>
+        <h2>What will be the output of the following code?</h2>
+        <div class="question-content">
+          <div>
+            <button class="button-style">
+              <h3>A.</h3>
+              <p>Equals</p>
+            </button>
+            <button class="button-style">
+              <h3>B.</h3>
+              <p>Not equals</p>
+            </button>
+            <button class="button-style">
+              <h3>C.</h3>
+              <p>null</p>
+            </button>
+            <button class="button-style">
+              <h3>D.</h3>
+              <p>undefined</p>
+            </button>
+          </div>
+          <figure>
+            <img src="./Assets/images/Question-Exampled-Image.png" />
+            <button class="button-style" id="Skip-Question-Button">
+              Skip Question
+            </button>
+          </figure>
+        </div>
+      </section>
+    </main>
     <!--=============================================-->
     <!-------------------- Footer---------------------->
     <!--=============================================-->
     <footer>
-      <ul class="footer-social">
+      <ul class="footer-social" style="display: none">
         <a href="#" class="fa fa-github"></a>
         <a href="#" class="fa fa-twitter"></a>
         <a href="#" class="fa fa-linkedin"></a>
         <a href="#" class="fa fa-instagram"></a>
       </ul>
-      <div class="footer-links">
+      <div class="footer-links" style="display: none">
         <ul class="linkStyle">
           <a href="#">Home</a>
           <a href="#">Study</a>
@@ -136,6 +132,7 @@
           <a href="#">Contact Me</a>
         </ul>
       </div>
+      <button class="button-style" id="Exit-Quiz-Button">Exit Quiz</button>
     </footer>
     <script src="./Assets/scripts/questions.js"></script>
   </body>
