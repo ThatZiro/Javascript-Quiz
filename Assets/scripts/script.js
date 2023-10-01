@@ -2,6 +2,10 @@
 //===========================================[ Global Variables ]=====================================//
 //====================================================================================================//
 
+//Root
+var root = document.querySelector(":root");
+//Alert
+var alert = document.querySelector("#Alert");
 //Pages
 var homePage = document.querySelector("#Page_Home");
 var questionPage = document.querySelector("#Page_Question");
@@ -11,31 +15,49 @@ var reviewPage = document.querySelector("#Page_Review");
 var studyPage = document.querySelector("#Page_Study");
 
 //Navigation
+var nav = document.querySelector("#Navigation");
+var timerText = document.querySelector("#Time"); // Use to change the time when timer is ticking down
 var homeNav = document.querySelectorAll(".Nav_Home");
 var studyNav = document.querySelectorAll(".Nav_Study");
 var highscoresNav = document.querySelectorAll(".Nav_Highscores");
-//Inputs
-// var initialInput = document.querySelector("#Initials-Input");
+
+//Question Page
+var questionText = document.querySelector("#Question-Text");
+var answerButtons = document.querySelectorAll(".question");
+//Footer
+var footerLinks = document.querySelector("#Footer-Links");
+var footerSocials = document.querySelector("#Footer-Social");
 
 //Buttons
-// var highscoresButton = document.querySelector("#HighScores-Button");
-// var startQuizButton = document.querySelector("#Start-Quiz-Button");
-// var submitScoreButton = document.querySelector("#Submit-Score-Button");
-// var answerButtons = document.querySelectorAll("#Questions-Page button");
-// var highscoreDisplays = document.querySelectorAll("#Highscore-Display p");
-// var backButton = document.querySelector("#Back-Button");
-// var clearButton = document.querySelector("#Clear-Button");
-
-//Answers
-// var answerOne = answerButtons.chi;
+var startQuizButton = document.querySelector("#Start-Quiz-Button");
+var exitQuizButton = document.querySelector("#Exit-Quiz-Button");
+var skipQuestionButton = document.querySelector("#Skip-Question-Button");
+var answerButtons = document.querySelectorAll(".question");
+var questionImage = document.querySelector("#Question-Image");
+var submitScoreButton = document.querySelector("#Submit-Score-Button");
+var playAgainButton = document.querySelector("#Play-Again-Button");
+var reviewButton = document.querySelector("#Review-Button");
 
 //Questions
-var allQuestions = javascriptQuestions; // List of all questions that havn't been played
+var allQuestions; // List of all questions that havn't been played
+var answeredQuestion = []; // List of all questions answered and there value {Question, Choice, Status}
 var currentQuestion; // Our current question thats on screen
-var questionCount = 5; // total amount of questions that need answered
 
+//Stats
+var scoreForm = document.querySelector("#Score-Form");
+var scoreSubmittedText = document.querySelector("#Score-Submitted-Text");
+var answeredNumber = document.querySelector("#Answered-Number");
+var incorrectNumber = document.querySelector("#Incorrect-Number");
+var skippedNumber = document.querySelector("#Skipped-Number");
+var scoreNumber = document.querySelector("#Score-Number");
+
+//Input
+var nameInput = document.querySelector("#Name-Input");
 //var
-var timer = 60;
+var timer = 120;
+var answer = 0;
+var skipped = 0;
+var incorrect = 0;
 var score = 0;
 
 //Database
@@ -47,20 +69,20 @@ var highscores = [];
 // == Load Page ==
 function LoadPage(page) {
   HideAllPages();
+  ToggleElement(nav, true); // Force Nav on all pages
+  ToggleQuestionFooter(false); // Disable Question Footer
   switch (page) {
     case "Home":
       ToggleElement(homePage, true);
-      // ToggleElement(header, true);
-      // LoadHeader("Coding Quiz Challenge");
-      // ToggleElement(landingPage, true);
       break;
     case "Question":
       ToggleElement(questionPage, true);
-      // questionCount = 5;
-      // ToggleElement(questionPage, true);
+      ToggleElement(nav, false); //Remove Nav
+      ToggleQuestionFooter(true); // Enable Question Footer
       break;
     case "Score":
       ToggleElement(scorePage, true);
+      BuildScorePage();
       // score = timer;
       // LoadHeader("All Done!");
       // resultsPage.children[0].textContent = "Your final score was " + score;
@@ -104,53 +126,122 @@ function LoadHeader(text) {
 }
 
 // === Event Handlers ===
+
+//Start The Quiz when button pressed
 function StartQuiz() {
   //Initilize Score
+  answer = 0;
+  skipped = 0;
+  incorrect = 0;
   score = 0;
+  allQuestions = [...javascriptQuestions];
   //Load Page
-  LoadPage("question");
+  LoadPage("Question");
 
   //Get Random Question
   LoadQuestion();
-  StartTimer(60);
+  StartTimer(120);
+}
+
+//Load A Question
+function LoadQuestion() {
+  currentQuestion = GetRandomQuestion();
+  if (currentQuestion != null) {
+    BuildQuestion(currentQuestion);
+  } else {
+    console.log("We are out of Questions"); //
+    LoadPage("Result");
+  }
 }
 
 function BuildQuestion(question) {
-  LoadHeader(question.Question);
-
+  //Set Question Text to Question
+  questionText.textContent = question.question;
   var shuffledAnswers = ShuffleArray(question.allAnswers);
 
   for (let i = 0; i < answerButtons.length; i++) {
     var a = answerButtons[i];
     var questionAnswer = shuffledAnswers[i];
-    a.textContent = i + 1 + ". " + questionAnswer;
+    a.children[1].textContent = questionAnswer;
     a.setAttribute("data-answer", questionAnswer);
   }
-}
 
-function LoadQuestion() {
-  questionCount--;
-  currentQuestion = GetRandomQuestion();
-  BuildQuestion(currentQuestion);
+  //Change Photo
+  if (question.image != "") {
+    questionImage.setAttribute("style", "display:block");
+    questionImage.setAttribute("src", question.image);
+  } else {
+    questionImage.setAttribute("style", "display:none");
+  }
 }
 
 function CheckAnswer(event) {
   var choice = event.target.dataset.answer;
-
+  answer++;
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
-    ShowMessage("Correct!", "#90FDB9");
+    console.log("Correct!");
+    // ShowMessage("Correct!", "#90FDB9"); // TODO Show Result
+    NextQuestion(choice);
   } else {
+    console.log("Incorrect!");
+    incorrect++;
     timer -= 10; //Penalty
-    timerText.textContent = "Time : " + timer;
-    ShowMessage("Incorrect!", "#FA7C68");
+    timerText.textContent = TimerToString(timer); // TODO Update this
+    // ShowMessage("Incorrect!", "#FA7C68"); // TODO Show Result
+    NextQuestion(choice);
   }
+}
 
-  if (questionCount > 0) {
-    LoadQuestion();
+function NextQuestion(_choice) {
+  var questionResult = {
+    question: currentQuestion,
+    choice: _choice,
+  };
+
+  answeredQuestion.push(questionResult);
+
+  LoadQuestion();
+}
+
+function SkipQuestion() {
+  // TODO Skip Question Logic
+  console.log("Question Skipped");
+  skipped++;
+  NextQuestion("");
+}
+
+function ExitQuiz() {
+  // TODO Skip Question Logic
+  console.log("End Quiz");
+  LoadPage("Home");
+}
+
+function BuildScorePage() {
+  //Show Form
+  ToggleElement(scoreForm, true);
+  ToggleElement(scoreSubmittedText, false);
+  //Set answered number
+  answeredNumber.textContent = answeredQuestion.length;
+  //Set incorrect number
+  console.log(incorrect);
+  if (incorrect == 0) {
+    incorrectNumber.textContent = "0";
+    incorrectNumber.removeAttribute("style");
   } else {
-    LoadPage("results");
+    incorrectNumber.textContent = "-" + incorrect;
+    incorrectNumber.setAttribute("style", "Color:red"); //TODO Change Color Value
   }
+  //Set skipped number
+  skippedNumber.textContent = skipped;
+  if (skipped == 0) {
+    skippedNumber.removeAttribute("style");
+  } else {
+    skippedNumber.setAttribute("style", "Color:yellow"); //TODO Change Color Value
+  }
+  //Calculate Score
+  score = answer - incorrect;
+  scoreNumber.textContent = score;
 }
 
 function BuildHighScoreDisplay() {
@@ -179,46 +270,64 @@ function BuildHighScoreDisplay() {
 }
 // === Timer ===
 function StartTimer(time) {
-  timerText.setAttribute("style", "visibility:visible");
   timer = time;
-  timerText.textContent = "Time : " + timer;
-  timerText.setAttribute("style", "height:100%");
+  timerText.textContent = TimerToString(timer);
   var tick = setInterval(function () {
     timer--;
-    timerText.textContent = "Time : " + timer;
-    if (timer <= 0 && score == 0) {
+    timerText.textContent = TimerToString(timer);
+    if (timer <= 0) {
+      console.log("Out of Time");
       EndTimer();
       clearInterval(tick);
     }
   }, 1000);
 }
+
+// TODO Stop Timer when someone exits the quiz
+// Try isInQuiz bool inside tick interval?
 function StopTimer() {
-  timerText.setAttribute("style", "visibility:hidden");
   timer = 0;
-  timerText.textContent = "Time : " + timer;
 }
 function EndTimer() {
-  LoadPage("results");
-  StopTimer();
-  ShowMessage("Times Up!", "black");
+  LoadPage("Score");
 }
 
 function SubmitHighscore(event) {
   event.preventDefault();
-  if (initialInput.value == "") {
-    ShowMessage("Please Insert your Initials", "black");
+
+  //TODO Add Special characters validation
+  //#region Name Validation
+  if (nameInput.value.length > 50) {
+    ShowMessage(
+      "please insert a name shorter then 50 characters",
+      "--darkColorShade1",
+      "--alertYellowSoft",
+      3000
+    );
+    nameInput.value = "";
     return;
   }
+  if (nameInput.value == "") {
+    ShowMessage(
+      "please insert name to submit score",
+      "--darkColorShade1",
+      "--alertYellowSoft",
+      3000
+    );
+    return;
+  }
+  //#endregion
 
-  var initials = initialInput.value;
-  initialInput.value = "";
+  //Hide Form
+  ToggleElement(scoreForm, false);
+  ToggleElement(scoreSubmittedText, true);
+  var name = nameInput.value;
+  nameInput.value = "";
   var newHighscore = {
-    name: initials,
+    name: name,
     score: score,
   };
-
   AddHighscore(newHighscore);
-  LoadPage("landing");
 }
 // === Database ===
 function AddHighscore(newData) {
@@ -252,18 +361,36 @@ function GetData() {
     return array;
   }
 }
+function ToggleQuestionFooter(status) {
+  if (status) {
+    footerSocials.setAttribute("style", "display:none");
+    footerLinks.setAttribute("style", "display:none");
+    exitQuizButton.setAttribute("style", "display:block");
+  } else {
+    footerSocials.setAttribute("style", "display:flex");
+    footerLinks.setAttribute("style", "display:flex");
+    exitQuizButton.setAttribute("style", "display:none");
+  }
+}
 
 // === Untility ===
+function ShowMessage(text, color, background, time) {
+  if (alert.style.display !== "none") {
+    return;
+  }
+  ToggleElement(alert, true);
+  alert.textContent = text;
+  var textColor = GetCSSVariable(color);
+  var backgroundColor = GetCSSVariable(background);
+  alert.setAttribute(
+    "style",
+    `color:${textColor}; background-color:${backgroundColor}`
+  );
 
-function ShowMessage(text, color) {
-  ToggleElement(messageBox, true);
-  messageBox.children[0].textContent = text;
-  messageBox.children[0].setAttribute("style", `color: ${color}`);
-
-  setTimeout(HideMessage, 1000);
+  setTimeout(HideMessage, time);
 }
 function HideMessage() {
-  ToggleElement(messageBox, false);
+  ToggleElement(alert, false);
 }
 function GetRandomQuestion() {
   let r = Math.floor(Math.random() * allQuestions.length);
@@ -290,6 +417,20 @@ function ShuffleArray(array) {
   }
   return newArray;
 }
+function TimerToString(time) {
+  var m = Math.floor(time / 60);
+  var s = time % 60;
+  if (m > 0) {
+    return `${m}m ${s}s`;
+  } else {
+    return `${s}s`;
+  }
+}
+
+function GetCSSVariable(variable) {
+  var rs = getComputedStyle(root);
+  return rs.getPropertyValue(variable);
+}
 //====================================================================================================//
 //===========================================[ Events ]===============================================//
 //====================================================================================================//
@@ -309,19 +450,20 @@ highscoresNav.forEach(function (element) {
     LoadPage("Highscores");
   });
 });
+// Quiz Buttons
+startQuizButton.addEventListener("click", StartQuiz);
+exitQuizButton.addEventListener("click", ExitQuiz);
+skipQuestionButton.addEventListener("click", SkipQuestion);
 
-// startQuizButton.addEventListener("click", StartQuiz);
+//Answers
+answerButtons.forEach(function (element) {
+  element.addEventListener("click", CheckAnswer);
 
-// answerButtons.forEach((answer) => {
-//   answer.addEventListener("click", CheckAnswer);
-// });
+  //Scores
+  submitScoreButton.addEventListener("click", SubmitHighscore);
+  playAgainButton.addEventListener("click", StartQuiz);
+});
 
-// submitScoreButton.addEventListener("click", SubmitHighscore);
-
-// backButton.addEventListener("click", LoadHomePage);
-// clearButton.addEventListener("click", ClearHighscores);
-
-// highscoresButton.addEventListener("click", LoadHighscorePage);
 //====================================================================================================//
 //===========================================[ Running Logic ]========================================//
 //====================================================================================================//

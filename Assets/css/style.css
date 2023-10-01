@@ -14,9 +14,12 @@
   --darkColorShade2: #191919;
   --darkColorShade3: #222222;
 
-  --accentColor: #482375;
-  --accentColorLight: #773ac2;
-  --accentColorLightest: #d9d2e8;
+  --alertRed: #ff6961;
+  --alertRedSoft: #ff817a;
+  --alertYellow: #fdfd96;
+  --alertYellowSoft: #ffffb0;
+  --alertGreen: #77dd77;
+  --alertGreenSoft: #a3ffa3;
   font-size: 12px;
 }
 
@@ -36,6 +39,7 @@ body {
 /*====================================================================================================*/
 
 header {
+  position: relative;
   background-color: var(--darkColorShade1);
   height: 150px;
   width: 100%;
@@ -88,6 +92,15 @@ header nav {
   left: 0;
 }
 
+#Alert {
+  position: absolute;
+  font-size: 4rem;
+  background-color: yellow;
+  border-radius: 50px;
+  top: 175px; /* Home: 215 | Question*/
+  left: 25px;
+  align-items: start;
+}
 /*====================================================================================================*/
 /*===========================================[ Home ]===============================================*/
 /*====================================================================================================*/
@@ -225,6 +238,7 @@ section p {
   justify-content: center;
   align-items: center;
   flex: 1;
+  overflow: hidden;
 }
 
 #Question figure button {
@@ -233,9 +247,10 @@ section p {
 }
 #Question img {
   background-color: white;
-  max-width: 100%;
+  max-width: 200%;
   max-height: 100%;
   border: 10px solid var(--darkColorShade1);
+  border-radius: 50px;
 }
 #Question h2 {
   padding: 30px;
@@ -360,6 +375,13 @@ section p {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+#Score h2 {
+  height: 75px;
+  color: var(--mainColor);
+  font-family: "Irish Grover", cursive;
+  font-size: 4rem;
 }
 /*====================================================================================================*/
 /*===========================================[ High Scores ]=============================================*/
