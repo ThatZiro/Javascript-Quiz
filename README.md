@@ -53,7 +53,7 @@
 ## Sneak Peek
 
 <a name="sneak-peek"></a>
-![mockup720](./README_Assets/README-Screenshot.png)
+![mockup720](./README_Assets/README-SneakPeak.png)
 
 ### <a href="https://thatziro.github.io/Javascript-Quiz/" target="_blank">Visit Site</a> 🚀
 
