@@ -18,18 +18,21 @@
     <!--=============================================-->
     <header>
       <img src="./Assets/images/Logo.png" alt="" />
-      <nav class="linkStyle" style="display: block">
+      <nav class="linkStyle" style="display: block" id="Navigation">
         <!-- Hide When Question-->
-        <a>Home</a>
-        <a>Study</a>
-        <a id="HighScores-Button">High Scores</a>
+        <a class="Nav_Home">Home</a>
+        <a class="Nav_Study">Study</a>
+        <a class="Nav_Highscores">High Scores</a>
       </nav>
+      <span id="Alert" style="display: none"
+        >please insert name to submit score</span
+      >
     </header>
     <!-- <h3 id="Timer-Text">Time : 0</h3> -->
     <!--=============================================-->
     <!-------------------- Home Page Section ---------->
     <!--=============================================-->
-    <main style="display: none">
+    <main id="Page_Home" style="display: block">
       <!-- Hide When Question-->
       <!-- Hide When Score-->
       <!-- Call To Action -->
@@ -65,50 +68,57 @@
       </section>
       <!-- Why Javascript -->
       <section id="Why-Javascript">
-        <h2>Why Javascript?</h2>
-        <p>
-          Learning JavaScript is like unlocking a world of limitless creativity
-          and innovation. With every line of code you write, you're sculpting
-          the digital future. Embrace the challenges, celebrate the
-          breakthroughs, and stay curious. Your passion for JavaScript is the
-          key to shaping the web and leaving your mark on the digital landscape.
-          Keep coding, keep learning, and let your journey be a constant source
-          of inspiration.
-        </p>
+        <div>
+          <h2>Why Javascript?</h2>
+          <p>
+            Learning JavaScript is like unlocking a world of limitless
+            creativity and innovation. With every line of code you write, you're
+            sculpting the digital future. Embrace the challenges, celebrate the
+            breakthroughs, and stay curious. Your passion for JavaScript is the
+            key to shaping the web and leaving your mark on the digital
+            landscape. Keep coding, keep learning, and let your journey be a
+            constant source of inspiration.
+          </p>
+        </div>
       </section>
     </main>
     <!--=============================================-->
     <!------------------- Question Page --------------->
     <!--=============================================-->
-    <main style="display: none">
+    <main id="Page_Question" style="display: none">
       <section id="Question">
         <!-- Hide When !Question-->
         <div id="Timer">
           <p>Time Remaining</p>
-          <p>1m 23s</p>
+          <p id="Time">1m 23s</p>
         </div>
-        <h2>What will be the output of the following code?</h2>
+        <h2 id="Question-Text">
+          What will be the output of the following code?
+        </h2>
         <div class="question-content">
           <div>
-            <button class="button-style">
+            <button class="button-style question">
               <h3>A.</h3>
               <p>Equals</p>
             </button>
-            <button class="button-style">
+            <button class="button-style question">
               <h3>B.</h3>
               <p>Not equals</p>
             </button>
-            <button class="button-style">
+            <button class="button-style question">
               <h3>C.</h3>
               <p>null</p>
             </button>
-            <button class="button-style">
+            <button class="button-style question">
               <h3>D.</h3>
               <p>undefined</p>
             </button>
           </div>
           <figure>
-            <img src="./Assets/images/Question-Exampled-Image.png" />
+            <img
+              src="./Assets/images/Question-Exampled-Image.png"
+              id="Question-Image"
+            />
             <button class="button-style" id="Skip-Question-Button">
               Skip Question
             </button>
@@ -119,28 +129,29 @@
     <!--=============================================-->
     <!------------------- Score Page ------------------>
     <!--=============================================-->
-    <main style="display: none">
+    <main id="Page_Score" style="display: none">
       <section id="Score">
         <!-- Hide When !Score-->
         <div class="score-display">
           <div class="stats">
             <h2>All Done!</h2>
-            <h3>Amswered</h3>
-            <h3>36</h3>
+            <h3>Answered</h3>
+            <h3 id="Answered-Number">36</h3>
             <h3>Incorrect</h3>
-            <h3>-12</h3>
+            <h3 id="Incorrect-Number">12</h3>
             <h3>Skipped</h3>
-            <h3>4</h3>
+            <h3 id="Skipped-Number">4</h3>
             <h3>Score</h3>
-            <h3>240</h3>
+            <h3 id="Score-Number">240</h3>
           </div>
-          <form>
+          <form id="Score-Form" style="display: none">
             <h4>Score Posted!</h4>
-            <input type="text" placeholder="name here" />
+            <input type="text" placeholder="name here" id="Name-Input" />
             <button class="button-style" id="Submit-Score-Button">
               Submit
             </button>
           </form>
+          <h2 id="Score-Submitted-Text">Score Submited!</h2>
           <div class="buttons">
             <button class="button-style" id="Play-Again-Button">
               Play Again
@@ -153,23 +164,26 @@
     <!--=============================================-->
     <!------------------- HighScore Page -------------->
     <!--=============================================-->
-    <main style="display: block">
+    <main id="Page_Highscores" style="display: none">
       <section id="HighScore">
         <!-- Hide When !Score-->
-        <div class="high-score-display" style="display: none">
+        <div class="high-score-display" style="display: flex" id="High-Scores">
           <h2>High Scores</h2>
-          <div class="highscores">
-            <div>
+          <h3 id="No-Highscore-Text">
+            No scores saved, take the quiz to see your scores here!
+          </h3>
+          <div id="highscores">
+            <div class="gold">
               <p>01</p>
               <p>Brandon</p>
               <p>3600</p>
             </div>
-            <div>
+            <div class="silver">
               <p>02</p>
               <p>Brandon</p>
               <p>3600</p>
             </div>
-            <div>
+            <div class="bronze">
               <p>03</p>
               <p>Brandon</p>
               <p>3600</p>
@@ -211,13 +225,13 @@
             </div>
           </div>
           <div class="buttons">
-            <button class="button-style" id="GoHome-Button">Go Home</button>
+            <button class="button-style" id="Go-Home-Button">Go Home</button>
             <button class="button-style" id="Clear-Scores-Button">
               Clear Scores
             </button>
           </div>
         </div>
-        <div class="high-score-display" style="display: flex">
+        <div class="high-score-display" style="display: flex" id="Clear-Scores">
           <h2>Clear High Scores</h2>
           <div class="confirm-clear-scores-text">
             <p>Are you sure?</p>
@@ -227,10 +241,10 @@
             </p>
           </div>
           <div class="buttons">
-            <button class="button-style" id="Confirm-Clear-Scores-Button">
+            <button class="button-style" id="Confirm-Clear-Button">
               Confirm
             </button>
-            <button class="button-style" id="Cancel-Clear-Scores-Button">
+            <button class="button-style" id="Cancel-Clear-Button">
               Cancel
             </button>
           </div>
@@ -240,7 +254,7 @@
     <!--=============================================-->
     <!------------------- Review Page --------------->
     <!--=============================================-->
-    <main style="display: none">
+    <main id="Page_Review" style="display: none">
       <section class="review-navigation">
         <button class="button-style" id="Previous-Question-Button">
           PREVIOUS
@@ -285,27 +299,47 @@
       </section>
     </main>
     <!--=============================================-->
+    <!------------------- Study Page -------------->
+    <!--=============================================-->
+    <main id="Page_Study" style="display: none">
+      <section id="Study">
+        <!-- Hide When !Score-->
+        <div class="high-score-display" style="display: flex">
+          <h2>Page Coming Soon!</h2>
+        </div>
+      </section>
+    </main>
+    <!--=============================================-->
     <!-------------------- Footer---------------------->
     <!--=============================================-->
     <footer>
-      <ul class="footer-social" style="display: flex">
+      <ul class="footer-social" style="display: flex" id="Footer-Social">
         <!-- Flex When Question-->
         <a href="#" class="fa fa-github"></a>
         <a href="#" class="fa fa-twitter"></a>
         <a href="#" class="fa fa-linkedin"></a>
         <a href="#" class="fa fa-instagram"></a>
       </ul>
-      <div class="footer-links" style="display: flex">
+      <div class="footer-links" style="display: flex" id="Footer-Links">
         <!-- Flex When Question-->
         <ul class="linkStyle">
-          <a href="#">Home</a>
-          <a href="#">Study</a>
-          <a href="#">High Scores</a>
+          <a class="Nav_Home">Home</a>
+          <a class="Nav_Study">Study</a>
+          <a class="Nav_Highscores">High Scores</a>
         </ul>
         <img src="./Assets/images/Logo-Alt.png" alt="" />
         <ul class="linkStyle">
-          <a href="#">More Like This</a>
-          <a href="#">Contact Me</a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScoDvuLaHmdgRZOwXh354r-9kXuuCzUch_iIJluYcljfTJr0A/viewform"
+            target="_blank"
+            >Report Bug</a
+          >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfx_eILkgnFajELMBFfowW8yZjZAKIJS2GyYj8ZhlkgKfiIYg/viewform"
+            target="_blank"
+            >Add Question</a
+          >
+          <a href="mailto:imbrandonbarnes@gmail.com">Contact Me</a>
         </ul>
       </div>
       <button class="button-style" id="Exit-Quiz-Button" style="display: none">
@@ -313,5 +347,6 @@
       </button>
     </footer>
     <script src="./Assets/scripts/questions.js"></script>
+    <script src="./Assets/scripts/script.js"></script>
   </body>
 </html>

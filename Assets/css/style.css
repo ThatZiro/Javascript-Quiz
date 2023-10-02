@@ -14,9 +14,12 @@
   --darkColorShade2: #191919;
   --darkColorShade3: #222222;
 
-  --accentColor: #482375;
-  --accentColorLight: #773ac2;
-  --accentColorLightest: #d9d2e8;
+  --alertRed: #ff6961;
+  --alertRedSoft: #ff817a;
+  --alertYellow: #fdfd96;
+  --alertYellowSoft: #ffffb0;
+  --alertGreen: #77dd77;
+  --alertGreenSoft: #a3ffa3;
   font-size: 12px;
 }
 
@@ -36,6 +39,7 @@ body {
 /*====================================================================================================*/
 
 header {
+  position: relative;
   background-color: var(--darkColorShade1);
   height: 150px;
   width: 100%;
@@ -88,6 +92,31 @@ header nav {
   left: 0;
 }
 
+#Alert {
+  position: absolute;
+  font-size: 4rem;
+  background-color: yellow;
+  border-radius: 50px;
+  top: 175px; /* Home: 215 | Question*/
+  left: 25px;
+  align-items: start;
+}
+.button-style {
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 2rem;
+  background-color: var(--mainColor);
+  width: 200px;
+  height: 50px;
+  color: var(--darkColorShade1);
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+.button-style:hover {
+  background-color: var(--mainColorAlt);
+  transition: all ease-in 0.2s;
+  transform: scale(1.05);
+}
 /*====================================================================================================*/
 /*===========================================[ Home ]===============================================*/
 /*====================================================================================================*/
@@ -104,10 +133,16 @@ section p {
   font-size: 3rem;
 }
 #Call-To-Action {
-  background-color: var(--lighterColor);
   flex-direction: column;
   justify-content: space-around;
   padding: 50px 20%;
+  color: var(--darkColorShade3);
+  background-image: linear-gradient(
+    to bottom,
+    var(--lighterColor),
+    var(--darkColorShade1)
+  );
+  background-size: contain;
 }
 
 #Call-To-Action * {
@@ -156,14 +191,18 @@ section p {
 #Why-Javascript {
   height: 500px;
   border-bottom: 20px solid var(--darkColorShade3);
-  background-color: var(--contrastColor);
-  flex-direction: column;
-  justify-content: space-around;
   padding: 50px 20%;
   color: var(--lightColor);
+  background-image: url("../images/Score-Background.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 }
 
-#Why-Javascript * {
+#Why-Javascript div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -215,6 +254,7 @@ section p {
   justify-content: center;
   align-items: center;
   flex: 1;
+  overflow: hidden;
 }
 
 #Question figure button {
@@ -223,9 +263,10 @@ section p {
 }
 #Question img {
   background-color: white;
-  max-width: 100%;
+  max-width: 200%;
   max-height: 100%;
   border: 10px solid var(--darkColorShade1);
+  border-radius: 50px;
 }
 #Question h2 {
   padding: 30px;
@@ -268,14 +309,14 @@ section p {
 /*====================================================================================================*/
 
 #Score,
-#HighScore {
+#HighScore,
+#Study {
   width: 100%;
   height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--lightColor);
-  border-top: 20px solid var(--darkColorShade1);
   border-bottom: 20px solid var(--darkColorShade1);
   background-image: url("../images/Score-Background.png");
   background-repeat: no-repeat;
@@ -351,6 +392,14 @@ section p {
   justify-content: space-around;
   align-items: center;
 }
+
+#Score h2 {
+  height: 75px;
+  color: var(--mainColor);
+  font-family: "Irish Grover", cursive;
+  font-size: 4rem;
+  text-align: center;
+}
 /*====================================================================================================*/
 /*===========================================[ High Scores ]=============================================*/
 /*====================================================================================================*/
@@ -363,13 +412,46 @@ section p {
   font-size: 6rem;
   color: var(--mainColor);
   font-family: "Irish Grover", cursive;
+  text-align: center;
 }
-#HighScore .highscores div {
-  display: flex;
-  justify-content: space-around;
-  color: var(--contrastColor);
+#HighScore h3 {
+  text-align: center;
   font-size: 4rem;
+  padding: 50px;
+}
+#HighScore #highscores div {
+  display: flex;
+  margin: 0px 50px;
+  color: var(--contrastColor);
+  justify-content: space-between;
+  gap: 50px;
   font-family: "Irish Grover", cursive;
+}
+#HighScore #highscores div :nth-child(1) {
+  flex: 1;
+  text-align: start;
+}
+#HighScore #highscores div :nth-child(2) {
+  flex: 2;
+  text-align: center;
+  text-wrap: nowrap;
+}
+#HighScore #highscores div :nth-child(3) {
+  flex: 1;
+  text-align: end;
+}
+
+#HighScore #highscores .gold p {
+  color: gold;
+  font-size: 3.75rem;
+}
+#HighScore #highscores .silver p {
+  color: silver;
+  font-size: 3.5rem;
+}
+#HighScore #highscores .bronze p {
+  color: burlywood;
+  font-size: 3.25rem;
 }
 #HighScore .buttons {
   display: flex;
@@ -440,123 +522,14 @@ section p {
   margin: 50px auto;
 }
 /*====================================================================================================*/
-/*===========================================[ Old ]=============================================*/
+/*=============================================[ Study ]==============================================*/
 /*====================================================================================================*/
-
-main {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
+#Study h2 {
+  font-size: 12rem;
+  color: var(--mainColor);
+  font-family: "Irish Grover", cursive;
 }
 
-h2 {
-  font-size: 3rem;
-  text-align: center;
-}
-
-#Landing-Page p {
-  font-size: 2rem;
-  text-align: center;
-}
-#Landing-Page button {
-  display: block;
-  background-color: var(--mainColorAlt);
-  height: 40px;
-  width: 100px;
-  margin: 10px auto;
-}
-#Questions-Page {
-  display: block; /* Toggle */
-  width: 50%;
-}
-#Questions-Page button {
-  width: 100%;
-  margin-bottom: 20px;
-  height: 50px;
-  text-align: start;
-  font-size: 2rem;
-  padding: 10px;
-}
-#Results-Page {
-  display: block; /* Toggle */
-  width: 25%;
-}
-#Results-Page {
-  margin-bottom: 20px;
-  text-align: start;
-  font-size: 2rem;
-  padding: 10px;
-}
-
-#Results-Page form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#Initials-Input {
-  background-color: var(--accentColorLightest);
-}
-#Highscore-Page {
-  position: relative;
-  display: block; /* Toggle */
-  margin: 0px auto;
-  width: 35%;
-  font-size: 2rem;
-}
-
-#Highscore-Display {
-  display: flex;
-  flex-direction: column;
-  min-height: 50px;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-#Highscore-Page button:nth-child(2) {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-#Highscore-Page button:nth-child(3) {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-#Highscore-Page p {
-  height: 20px;
-  padding: 10px;
-  background-color: var(--accentColorLightest);
-}
-.button-style {
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 2rem;
-  background-color: var(--mainColor);
-  width: 200px;
-  height: 50px;
-  color: var(--darkColorShade1);
-  transition: all ease-in 0.2s;
-  cursor: pointer;
-}
-.button-style:hover {
-  background-color: var(--mainColorAlt);
-  transition: all ease-in 0.2s;
-  transform: scale(1.05);
-}
-
-/* Main Footer */
-
-footer h3 {
-  margin-left: 5px;
-  margin-top: 10px;
-  transition: All ease-in 0.5s;
-}
-
-/* Landing Page */
-#HIDDEN {
-  display: none;
-}
 /*====================================================================================================*/
 /*===========================================[ Footer ]===============================================*/
 /*====================================================================================================*/
