@@ -24,7 +24,7 @@
 </br>
 </br>
 
-<h3 font size="1" align="right"><a href="https://thatziro.github.io/Password-Generator/" target="_blank">Visit Site🚀</a></h3>
+<h3 font size="1" align="right"><a href="https://thatziro.github.io/Javascript-Quiz/" target="_blank">Visit Site🚀</a></h3>
 
 ## Table of Contents
 
@@ -55,7 +55,7 @@
 <a name="sneak-peek"></a>
 ![mockup720](./README_Assets/README-Screenshot.png)
 
-### <a href="https://thatziro.github.io/Password-Generator/" target="_blank">Visit Site</a> 🚀
+### <a href="https://thatziro.github.io/Javascript-Quiz/" target="_blank">Visit Site</a> 🚀
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -68,7 +68,7 @@
   <img src="./README_Assets/README-Chart_1.png" alt="Logo" width="1000">
 </details>
 <details>
-  <summary style="font-size:18px">Logic</summary>
+  <summary style="font-size:18px">Layout Design</summary>
   <img src="./README_Assets/README-Chart_2.png" alt="Logo" width="1000">
 </details>
 
