@@ -65,11 +65,11 @@
 
 <details>
   <summary  style="font-size:18px">Flow Chart</summary>
-  <img src="./README_Assets/README-Chart_1.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-Chart-1.png" alt="Logo" width="1000">
 </details>
 <details>
   <summary style="font-size:18px">Layout Design</summary>
-  <img src="./README_Assets/README-Chart_2.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-Chart-2.png" alt="Logo" width="1000">
 </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
