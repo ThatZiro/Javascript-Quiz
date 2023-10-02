@@ -434,6 +434,7 @@ section p {
 #HighScore #highscores div :nth-child(2) {
   flex: 2;
   text-align: center;
+  text-wrap: nowrap;
 }
 #HighScore #highscores div :nth-child(3) {
   flex: 1;

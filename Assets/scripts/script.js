@@ -69,6 +69,7 @@ var answer = 0;
 var skipped = 0;
 var incorrect = 0;
 var score = 0;
+var askingQuestion;
 
 //Database
 var highscores = [];
@@ -143,6 +144,7 @@ function StartQuiz() {
   incorrect = 0;
   score = 0;
   allQuestions = [...javascriptQuestions];
+  answeredQuestion = [];
   //Load Page
   LoadPage("Question");
 
@@ -164,6 +166,19 @@ function LoadQuestion() {
 
 function BuildQuestion(question) {
   //Set Question Text to Question
+  var thisQuestion = currentQuestion;
+  var count = 0;
+  ToggleElement(skipQuestionButton, false);
+  var tick = setInterval(function () {
+    if (thisQuestion != currentQuestion) {
+      clearInterval(tick);
+    }
+    count++;
+    if (count > 10) {
+      ToggleElement(skipQuestionButton, true);
+      clearInterval(tick);
+    }
+  }, 1000);
   questionText.textContent = question.question;
   var shuffledAnswers = ShuffleArray(question.allAnswers);
 
@@ -184,18 +199,19 @@ function BuildQuestion(question) {
 }
 
 function CheckAnswer(event) {
-  var choice = event.target.dataset.answer;
+  var choice = event.dataset.answer;
+  console.log(event.dataset.answer);
   answer++;
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
-    // ShowMessage("Correct!", "#90FDB9"); // TODO Show Result
-    NextQuestion(choice);
+    ShowMessage("Correct", "--darkColorShade1", "--alertYellow", 1000);
+    setTimeout(NextQuestion, 10, choice);
   } else {
     incorrect++;
     timer -= 10; //Penalty
     timerText.textContent = TimerToString(timer); // TODO Update this
-    // ShowMessage("Incorrect!", "#FA7C68"); // TODO Show Result
-    NextQuestion(choice);
+    ShowMessage("Incorrect -10s", "--darkColorShade1", "--alertRed", 1000);
+    setTimeout(NextQuestion, 10, choice);
   }
 }
 
@@ -212,14 +228,12 @@ function NextQuestion(_choice) {
 
 function SkipQuestion() {
   // TODO Skip Question Logic
-  console.log("Question Skipped");
   skipped++;
   NextQuestion("");
 }
 
 function ExitQuiz() {
   // TODO Skip Question Logic
-  console.log("End Quiz");
   LoadPage("Home");
 }
 
@@ -252,7 +266,6 @@ function BuildScorePage() {
 function BuildHighScoreDisplay() {
   highscores = GetData();
 
-  console.log(highscores);
   if (highscores.length != 0) {
     //Sort the array in decending order by "score" property
     highscores.sort((a, b) => b.score - a.score);
@@ -299,9 +312,9 @@ function SubmitHighscore(event) {
 
   //TODO Add Special characters validation
   //#region Name Validation
-  if (nameInput.value.length > 50) {
+  if (nameInput.value.length >= 20) {
     ShowMessage(
-      "please insert a name shorter then 50 characters",
+      "please insert a name shorter then 20 characters",
       "--darkColorShade1",
       "--alertYellowSoft",
       3000
@@ -329,7 +342,6 @@ function SubmitHighscore(event) {
     name: name,
     score: score,
   };
-  console.log(newHighscore);
   AddHighscore(newHighscore);
 }
 // === Database ===
@@ -426,7 +438,8 @@ function ToggleElement(element, status, string) {
   }
 }
 
-function ShuffleArray(array) {
+function ShuffleArray(_array) {
+  var array = [..._array];
   var newArray = [];
   var count = array.length;
   for (let i = 0; i < count; i++) {
@@ -476,12 +489,13 @@ skipQuestionButton.addEventListener("click", SkipQuestion);
 
 //Answers
 answerButtons.forEach(function (element) {
-  element.addEventListener("click", CheckAnswer);
-
-  //Scores
-  submitScoreButton.addEventListener("click", SubmitHighscore);
-  playAgainButton.addEventListener("click", StartQuiz);
+  element.addEventListener("click", function (event) {
+    CheckAnswer(element);
+  });
 });
+//Scores
+submitScoreButton.addEventListener("click", SubmitHighscore);
+playAgainButton.addEventListener("click", StartQuiz);
 
 //High Score Page
 goHomeButton.addEventListener("click", function () {
