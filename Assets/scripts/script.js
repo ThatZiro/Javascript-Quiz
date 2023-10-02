@@ -1,7 +1,9 @@
 //====================================================================================================//
 //===========================================[ Global Variables ]=====================================//
 //====================================================================================================//
-
+//Audio
+var correctSound = new Audio("./Assets/sounds/sound1.mp3");
+var incorrectSound = new Audio("./Assets/sounds/soundwrong2.mp3");
 //Root
 var root = document.querySelector(":root");
 //Alert
@@ -70,6 +72,7 @@ var skipped = 0;
 var incorrect = 0;
 var score = 0;
 var askingQuestion;
+var clearTimer;
 
 //Database
 var highscores = [];
@@ -82,6 +85,7 @@ function LoadPage(page) {
   HideAllPages();
   ToggleElement(nav, true); // Force Nav on all pages
   ToggleQuestionFooter(false); // Disable Question Footer
+  clearTimer = true;
   switch (page) {
     case "Home":
       ToggleElement(homePage, true);
@@ -205,12 +209,14 @@ function CheckAnswer(event) {
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
     ShowMessage("Correct", "--darkColorShade1", "--alertYellow", 1000);
+    correctSound.play();
     setTimeout(NextQuestion, 10, choice);
   } else {
     incorrect++;
     timer -= 10; //Penalty
     timerText.textContent = TimerToString(timer); // TODO Update this
     ShowMessage("Incorrect -10s", "--darkColorShade1", "--alertRed", 1000);
+    incorrectSound.play();
     setTimeout(NextQuestion, 10, choice);
   }
 }
@@ -286,12 +292,16 @@ function BuildHighScoreDisplay() {
 }
 // === Timer ===
 function StartTimer(time) {
+  clearTimer = false;
   timer = time;
   timerText.textContent = TimerToString(timer);
   var tick = setInterval(function () {
     timer--;
     timerText.textContent = TimerToString(timer);
-    if (timer <= 0) {
+    if (clearTimer) {
+      clearInterval(tick);
+    } else if (timer <= 0) {
+      clearTimer = false;
       EndTimer();
       clearInterval(tick);
     }
@@ -450,6 +460,9 @@ function ShuffleArray(_array) {
   return newArray;
 }
 function TimerToString(time) {
+  if (time < 0) {
+    time = 0;
+  }
   var m = Math.floor(time / 60);
   var s = time % 60;
   if (m > 0) {
