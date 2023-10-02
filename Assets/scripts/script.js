@@ -37,6 +37,10 @@ var questionImage = document.querySelector("#Question-Image");
 var submitScoreButton = document.querySelector("#Submit-Score-Button");
 var playAgainButton = document.querySelector("#Play-Again-Button");
 var reviewButton = document.querySelector("#Review-Button");
+var goHomeButton = document.querySelector("#Go-Home-Button");
+var clearScoresButton = document.querySelector("#Clear-Scores-Button");
+var confirmClearButton = document.querySelector("#Confirm-Clear-Button");
+var cancelClearButton = document.querySelector("#Cancel-Clear-Button");
 
 //Questions
 var allQuestions; // List of all questions that havn't been played
@@ -50,6 +54,12 @@ var answeredNumber = document.querySelector("#Answered-Number");
 var incorrectNumber = document.querySelector("#Incorrect-Number");
 var skippedNumber = document.querySelector("#Skipped-Number");
 var scoreNumber = document.querySelector("#Score-Number");
+
+//High Score Page
+var highscoresDisplay = document.querySelector("#High-Scores");
+var clearScoresDisplay = document.querySelector("#Clear-Scores");
+var highscoreDisplays = document.querySelectorAll("#highscores div");
+var noHighscoreText = document.querySelector("#No-Highscore-Text");
 
 //Input
 var nameInput = document.querySelector("#Name-Input");
@@ -83,18 +93,12 @@ function LoadPage(page) {
     case "Score":
       ToggleElement(scorePage, true);
       BuildScorePage();
-      // score = timer;
-      // LoadHeader("All Done!");
-      // resultsPage.children[0].textContent = "Your final score was " + score;
-      // StopTimer();
-      // ToggleElement(resultsPage, true);
       break;
     case "Highscores":
       ToggleElement(highscoresPage, true);
-      // ToggleElement(header, false);
-      // LoadHeader("High Scores");
-      // BuildHighScoreDisplay();
-      // ToggleElement(highscorePage, true);
+      ToggleElement(highscoresDisplay, true, "flex");
+      ToggleElement(clearScoresDisplay, false);
+      BuildHighScoreDisplay();
       break;
     case "Review": {
       ToggleElement(reviewPage, true);
@@ -125,6 +129,10 @@ function LoadHeader(text) {
   headerText.textContent = text;
 }
 
+function ClearScoresConfirmation() {
+  ToggleElement(clearScoresDisplay, true, "flex");
+  ToggleElement(highscoresDisplay, false);
+}
 // === Event Handlers ===
 
 //Start The Quiz when button pressed
@@ -180,11 +188,9 @@ function CheckAnswer(event) {
   answer++;
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
-    console.log("Correct!");
     // ShowMessage("Correct!", "#90FDB9"); // TODO Show Result
     NextQuestion(choice);
   } else {
-    console.log("Incorrect!");
     incorrect++;
     timer -= 10; //Penalty
     timerText.textContent = TimerToString(timer); // TODO Update this
@@ -224,7 +230,6 @@ function BuildScorePage() {
   //Set answered number
   answeredNumber.textContent = answeredQuestion.length;
   //Set incorrect number
-  console.log(incorrect);
   if (incorrect == 0) {
     incorrectNumber.textContent = "0";
     incorrectNumber.removeAttribute("style");
@@ -247,25 +252,23 @@ function BuildScorePage() {
 function BuildHighScoreDisplay() {
   highscores = GetData();
 
+  console.log(highscores);
   if (highscores.length != 0) {
     //Sort the array in decending order by "score" property
     highscores.sort((a, b) => b.score - a.score);
-
-    for (let i = 0; i < highscoreDisplays.length; i++) {
-      if (i < highscores.length) {
-        ToggleElement(highscoreDisplays[i], true);
-        var s = `${i + 1}. ${highscores[i].name} : ${highscores[i].score}`;
-        highscoreDisplays[i].textContent = s;
-      } else {
-        ToggleElement(highscoreDisplays[i], false);
-      }
-    }
+    ToggleElement(noHighscoreText, false);
   } else {
-    highscoreDisplays.forEach((element) => {
-      ToggleElement(element, false);
-    });
-    ToggleElement(highscoreDisplays[0], true);
-    highscoreDisplays[0].textContent = "Take the Quiz and save your scores!";
+    ToggleElement(noHighscoreText, true);
+  }
+
+  for (let i = 0; i < highscoreDisplays.length; i++) {
+    if (highscores[i]) {
+      highscoreDisplays[i].children[1].textContent = highscores[i].name;
+      highscoreDisplays[i].children[2].textContent = highscores[i].score;
+      highscoreDisplays[i].setAttribute("style", "visibility: nothidden");
+    } else {
+      highscoreDisplays[i].setAttribute("style", "visibility: hidden");
+    }
   }
 }
 // === Timer ===
@@ -276,7 +279,6 @@ function StartTimer(time) {
     timer--;
     timerText.textContent = TimerToString(timer);
     if (timer <= 0) {
-      console.log("Out of Time");
       EndTimer();
       clearInterval(tick);
     }
@@ -327,6 +329,7 @@ function SubmitHighscore(event) {
     name: name,
     score: score,
   };
+  console.log(newHighscore);
   AddHighscore(newHighscore);
 }
 // === Database ===
@@ -339,8 +342,13 @@ function AddHighscore(newData) {
 function ClearHighscores() {
   ClearData();
   highscores = [];
-  BuildHighScoreDisplay();
-  ShowMessage("highscores cleared...", "#767A76");
+  ShowMessage(
+    "High Scores Successfully Cleared...",
+    "--darkColorShade1",
+    "--alertYellowSoft",
+    2000
+  );
+  LoadPage("Highscores");
 }
 
 function AddData(scoreData) {
@@ -473,6 +481,17 @@ answerButtons.forEach(function (element) {
   //Scores
   submitScoreButton.addEventListener("click", SubmitHighscore);
   playAgainButton.addEventListener("click", StartQuiz);
+});
+
+//High Score Page
+goHomeButton.addEventListener("click", function () {
+  LoadPage("Home");
+});
+
+clearScoresButton.addEventListener("click", ClearScoresConfirmation);
+confirmClearButton.addEventListener("click", ClearHighscores);
+cancelClearButton.addEventListener("click", function () {
+  LoadPage("Highscores");
 });
 
 //====================================================================================================//

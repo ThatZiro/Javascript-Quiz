@@ -412,13 +412,45 @@ section p {
   font-size: 6rem;
   color: var(--mainColor);
   font-family: "Irish Grover", cursive;
+  text-align: center;
 }
-#HighScore .highscores div {
-  display: flex;
-  justify-content: space-around;
-  color: var(--contrastColor);
+#HighScore h3 {
+  text-align: center;
   font-size: 4rem;
+  padding: 50px;
+}
+#HighScore #highscores div {
+  display: flex;
+  margin: 0px 50px;
+  color: var(--contrastColor);
+  justify-content: space-between;
+  gap: 50px;
   font-family: "Irish Grover", cursive;
+}
+#HighScore #highscores div :nth-child(1) {
+  flex: 1;
+  text-align: start;
+}
+#HighScore #highscores div :nth-child(2) {
+  flex: 2;
+  text-align: center;
+}
+#HighScore #highscores div :nth-child(3) {
+  flex: 1;
+  text-align: end;
+}
+
+#HighScore #highscores .gold p {
+  color: gold;
+  font-size: 3.75rem;
+}
+#HighScore #highscores .silver p {
+  color: silver;
+  font-size: 3.5rem;
+}
+#HighScore #highscores .bronze p {
+  color: burlywood;
+  font-size: 3.25rem;
 }
 #HighScore .buttons {
   display: flex;

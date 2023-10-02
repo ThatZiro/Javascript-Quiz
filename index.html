@@ -167,20 +167,23 @@
     <main id="Page_Highscores" style="display: none">
       <section id="HighScore">
         <!-- Hide When !Score-->
-        <div class="high-score-display" style="display: none">
+        <div class="high-score-display" style="display: flex" id="High-Scores">
           <h2>High Scores</h2>
-          <div class="highscores">
-            <div>
+          <h3 id="No-Highscore-Text">
+            No scores saved, take the quiz to see your scores here!
+          </h3>
+          <div id="highscores">
+            <div class="gold">
               <p>01</p>
               <p>Brandon</p>
               <p>3600</p>
             </div>
-            <div>
+            <div class="silver">
               <p>02</p>
               <p>Brandon</p>
               <p>3600</p>
             </div>
-            <div>
+            <div class="bronze">
               <p>03</p>
               <p>Brandon</p>
               <p>3600</p>
@@ -222,13 +225,13 @@
             </div>
           </div>
           <div class="buttons">
-            <button class="button-style" id="GoHome-Button">Go Home</button>
+            <button class="button-style" id="Go-Home-Button">Go Home</button>
             <button class="button-style" id="Clear-Scores-Button">
               Clear Scores
             </button>
           </div>
         </div>
-        <div class="high-score-display" style="display: flex">
+        <div class="high-score-display" style="display: flex" id="Clear-Scores">
           <h2>Clear High Scores</h2>
           <div class="confirm-clear-scores-text">
             <p>Are you sure?</p>
@@ -238,10 +241,10 @@
             </p>
           </div>
           <div class="buttons">
-            <button class="button-style" id="Confirm-Clear-Scores-Button">
+            <button class="button-style" id="Confirm-Clear-Button">
               Confirm
             </button>
-            <button class="button-style" id="Cancel-Clear-Scores-Button">
+            <button class="button-style" id="Cancel-Clear-Button">
               Cancel
             </button>
           </div>
