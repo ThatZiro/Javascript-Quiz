@@ -526,6 +526,3 @@ cancelClearButton.addEventListener("click", function () {
 //====================================================================================================//
 
 LoadPage("Home");
-// ToggleElement(messageBox, false);
-// timerText.setAttribute("style", "visibility:hidden");
-// LoadPage("landing");
