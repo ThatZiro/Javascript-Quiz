@@ -7,7 +7,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "In <span class='bold'>this</span> JavaScript code block, what is the 'let' keyword used for?",
+      "In <span class='bold'><span class='bold'>this</span></span> JavaScript code block, what is the 'let' keyword used for?",
     correctAnswer: "Declaring a variable with block scope.",
     allAnswers: [
       "Creating a function.",
@@ -19,7 +19,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What does the code inside <span class='bold'>this</span> JavaScript 'for' loop do?",
+      "What does the code inside <span class='bold'><span class='bold'>this</span></span> JavaScript 'for' loop do?",
     correctAnswer: "It logs numbers from 1 to 5 to the console.",
     allAnswers: [
       "It multiplies two numbers together.",
@@ -31,7 +31,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'return' statement in <span class='bold'>this</span> JavaScript code?",
+      "What is the purpose of the 'return' statement in <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
     correctAnswer: "It returns a value from a function.",
     allAnswers: [
       "It breaks out of a loop.",
@@ -43,14 +43,14 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What will be the value of 'result' after executing <span class='bold'>this</span> JavaScript code?",
+      "What will be the value of 'result' after executing <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
     correctAnswer: "15",
     allAnswers: ["10", "5", "15", "20"],
     image: "./Assets/images/Questions/question-5.png",
   },
   {
     question:
-      "What does the 'if' statement in <span class='bold'>this</span> JavaScript code block check for?",
+      "What does the 'if' statement in <span class='bold'><span class='bold'>this</span></span> JavaScript code block check for?",
     correctAnswer: "Whether 'age' is greater than or equal to 18.",
     allAnswers: [
       "Whether 'name' is defined.",
@@ -62,7 +62,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'addEventListener' method in <span class='bold'>this</span> JavaScript code?",
+      "What is the purpose of the 'addEventListener' method in <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
     correctAnswer: "It attaches an event handler to an HTML element.",
     allAnswers: [
       "It creates a new element in the DOM.",
@@ -74,14 +74,14 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What will be the value of 'total' after <span class='bold'>this</span> JavaScript code is executed?",
+      "What will be the value of 'total' after <span class='bold'><span class='bold'>this</span></span> JavaScript code is executed?",
     correctAnswer: "15",
     allAnswers: ["10", "5", "15", "20"],
     image: "./Assets/images/Questions/question-8.png",
   },
   {
     question:
-      "What is the role of 'console.log()' in <span class='bold'>this</span> JavaScript code block?",
+      "What is the role of 'console.log()' in <span class='bold'><span class='bold'>this</span></span> JavaScript code block?",
     correctAnswer: "It prints 'Hello, world!' to the console.",
     allAnswers: [
       "It defines a variable.",
@@ -103,7 +103,8 @@ const javascriptQuestions = [
     image: `./Assets/images/Questions/question-10.png`,
   },
   {
-    question: "What is the purpose of the 'class' attribute in this HTML code?",
+    question:
+      "What is the purpose of the 'class' attribute in <span class='bold'><span class='bold'>this</span></span> HTML code?",
     correctAnswer: "It specifies a CSS class to apply styling to the element.",
     allAnswers: [
       "It defines a JavaScript class.",
@@ -114,7 +115,8 @@ const javascriptQuestions = [
     image: `./Assets/images/Questions/question-11.png`,
   },
   {
-    question: "What does this JavaScript code block accomplish?",
+    question:
+      "What does <span class='bold'>this</span> JavaScript code block accomplish?",
     correctAnswer:
       "It creates a function that calculates the factorial of a number.",
     allAnswers: [
@@ -127,7 +129,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What will be the result of the 'map' function in this JavaScript code?",
+      "What will be the result of the 'map' function in <span class='bold'>this</span> JavaScript code?",
     correctAnswer: "[6, 12, 18, 24]",
     allAnswers: [
       "[5, 10, 15, 20]",
@@ -139,7 +141,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'addEventListener' method in this JavaScript code?",
+      "What is the purpose of the 'addEventListener' method in <span class='bold'>this</span> JavaScript code?",
     correctAnswer: "It adds a click event listener to a button element.",
     allAnswers: [
       "It removes an element from the DOM.",
@@ -150,7 +152,8 @@ const javascriptQuestions = [
     image: `./Assets/images/Questions/question-14.png`,
   },
   {
-    question: "What is the purpose of this JavaScript code block?",
+    question:
+      "What is the purpose of <span class='bold'>this</span> JavaScript code block?",
     correctAnswer: "It defines a class with a constructor and methods.",
     allAnswers: [
       "It creates an array of objects.",
@@ -161,7 +164,8 @@ const javascriptQuestions = [
     image: `./Assets/images/Questions/question-15.png`,
   },
   {
-    question: "What will be the output of this JavaScript code?",
+    question:
+      "What will be the output of <span class='bold'>this</span> JavaScript code?",
     correctAnswer:
       "It will display 'Result: 28' in the HTML element with ID 'output'.",
     allAnswers: [
@@ -173,7 +177,8 @@ const javascriptQuestions = [
     image: `./Assets/images/Questions/question-16.png`,
   },
   {
-    question: "What does this JavaScript code block accomplish?",
+    question:
+      "What does <span class='bold'>this</span> JavaScript code block accomplish?",
     correctAnswer: "It creates an array with three strings.",
     allAnswers: [
       "It defines an object with properties.",
