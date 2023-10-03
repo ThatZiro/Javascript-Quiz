@@ -2,80 +2,81 @@
 //===========================================[ Global Variables ]=====================================//
 //====================================================================================================//
 //Audio
-var correctSound = new Audio("./Assets/sounds/sound1.mp3");
-var incorrectSound = new Audio("./Assets/sounds/soundwrong2.mp3");
+let correctSound = new Audio("./Assets/sounds/sound1.mp3");
+let incorrectSound = new Audio("./Assets/sounds/soundwrong2.mp3");
 //Root
-var root = document.querySelector(":root");
+let root = document.querySelector(":root");
 //Alert
-var alert = document.querySelector("#Alert");
+let alert = document.querySelector("#Alert");
 //Pages
-var homePage = document.querySelector("#Page_Home");
-var questionPage = document.querySelector("#Page_Question");
-var scorePage = document.querySelector("#Page_Score");
-var highscoresPage = document.querySelector("#Page_Highscores");
-var reviewPage = document.querySelector("#Page_Review");
-var studyPage = document.querySelector("#Page_Study");
+let homePage = document.querySelector("#Page_Home");
+let questionPage = document.querySelector("#Page_Question");
+let scorePage = document.querySelector("#Page_Score");
+let highscoresPage = document.querySelector("#Page_Highscores");
+let reviewPage = document.querySelector("#Page_Review");
+let studyPage = document.querySelector("#Page_Study");
 
 //Navigation
-var nav = document.querySelector("#Navigation");
-var timerText = document.querySelector("#Time"); // Use to change the time when timer is ticking down
-var homeNav = document.querySelectorAll(".Nav_Home");
-var studyNav = document.querySelectorAll(".Nav_Study");
-var highscoresNav = document.querySelectorAll(".Nav_Highscores");
+let nav = document.querySelector("#Navigation");
+let timerText = document.querySelector("#Time"); // Use to change the time when timer is ticking down
+let homeNav = document.querySelectorAll(".Nav_Home");
+let studyNav = document.querySelectorAll(".Nav_Study");
+let highscoresNav = document.querySelectorAll(".Nav_Highscores");
 
 //Question Page
-var questionText = document.querySelector("#Question-Text");
-var answerButtons = document.querySelectorAll(".question");
+let questionText = document.querySelector("#Question-Text");
+//Header
+let header = document.querySelector("header");
 //Footer
-var footerLinks = document.querySelector("#Footer-Links");
-var footerSocials = document.querySelector("#Footer-Social");
+let footerLinks = document.querySelector("#Footer-Links");
+let footerSocials = document.querySelector("#Footer-Social");
 
 //Buttons
-var startQuizButton = document.querySelector("#Start-Quiz-Button");
-var exitQuizButton = document.querySelector("#Exit-Quiz-Button");
-var skipQuestionButton = document.querySelector("#Skip-Question-Button");
-var answerButtons = document.querySelectorAll(".question");
-var questionImage = document.querySelector("#Question-Image");
-var submitScoreButton = document.querySelector("#Submit-Score-Button");
-var playAgainButton = document.querySelector("#Play-Again-Button");
-var reviewButton = document.querySelector("#Review-Button");
-var goHomeButton = document.querySelector("#Go-Home-Button");
-var clearScoresButton = document.querySelector("#Clear-Scores-Button");
-var confirmClearButton = document.querySelector("#Confirm-Clear-Button");
-var cancelClearButton = document.querySelector("#Cancel-Clear-Button");
+let startQuizButton = document.querySelector("#Start-Quiz-Button");
+let exitQuizButton = document.querySelector("#Exit-Quiz-Button");
+let skipQuestionButton = document.querySelector("#Skip-Question-Button");
+let answerButtons = document.querySelectorAll(".question");
+let questionImage = document.querySelector("#Question-Image");
+let submitScoreButton = document.querySelector("#Submit-Score-Button");
+let playAgainButton = document.querySelector("#Play-Again-Button");
+let reviewButton = document.querySelector("#Review-Button");
+let goHomeButton = document.querySelector("#Go-Home-Button");
+let clearScoresButton = document.querySelector("#Clear-Scores-Button");
+let confirmClearButton = document.querySelector("#Confirm-Clear-Button");
+let cancelClearButton = document.querySelector("#Cancel-Clear-Button");
 
 //Questions
-var allQuestions; // List of all questions that havn't been played
-var answeredQuestion = []; // List of all questions answered and there value {Question, Choice, Status}
-var currentQuestion; // Our current question thats on screen
+let allQuestions; // List of all questions that haven't been played
+let answeredQuestion = []; // List of all questions answered and there value {Question, Choice, Status}
+let currentQuestion; // Our current question thats on screen
 
 //Stats
-var scoreForm = document.querySelector("#Score-Form");
-var scoreSubmittedText = document.querySelector("#Score-Submitted-Text");
-var answeredNumber = document.querySelector("#Answered-Number");
-var incorrectNumber = document.querySelector("#Incorrect-Number");
-var skippedNumber = document.querySelector("#Skipped-Number");
-var scoreNumber = document.querySelector("#Score-Number");
+let scoreForm = document.querySelector("#Score-Form");
+let scoreSubmittedText = document.querySelector("#Score-Submitted-Text");
+let answeredNumber = document.querySelector("#Answered-Number");
+let incorrectNumber = document.querySelector("#Incorrect-Number");
+let skippedNumber = document.querySelector("#Skipped-Number");
+let scoreNumber = document.querySelector("#Score-Number");
 
 //High Score Page
-var highscoresDisplay = document.querySelector("#High-Scores");
-var clearScoresDisplay = document.querySelector("#Clear-Scores");
-var highscoreDisplays = document.querySelectorAll("#highscores div");
-var noHighscoreText = document.querySelector("#No-Highscore-Text");
+let highscoresDisplay = document.querySelector("#High-Scores");
+let clearScoresDisplay = document.querySelector("#Clear-Scores");
+let highscoreDisplays = document.querySelectorAll("#highscores div");
+let noHighscoreText = document.querySelector("#No-Highscore-Text");
 
 //Input
-var nameInput = document.querySelector("#Name-Input");
+let nameInput = document.querySelector("#Name-Input");
 //var
-var timer = 120;
-var answer = 0;
-var skipped = 0;
-var incorrect = 0;
-var score = 0;
-var askingQuestion;
-var clearTimer;
+let timer = 120;
+let answer = 0;
+let skipped = 0;
+let incorrect = 0;
+let score = 0;
+let askingQuestion;
+let clearTimer;
 
 //Database
-var highscores = [];
+let highscores = [];
 //====================================================================================================//
 //===========================================[ Functions ]============================================//
 //====================================================================================================//
@@ -83,8 +84,9 @@ var highscores = [];
 // == Load Page ==
 function LoadPage(page) {
   HideAllPages();
-  ToggleElement(nav, true); // Force Nav on all pages
+  ToggleElement(nav, true, "flex"); // Force Nav on all pages
   ToggleQuestionFooter(false); // Disable Question Footer
+  ToggleIfSmallScreen(header, true);
   clearTimer = true;
   switch (page) {
     case "Home":
@@ -94,6 +96,7 @@ function LoadPage(page) {
       ToggleElement(questionPage, true);
       ToggleElement(nav, false); //Remove Nav
       ToggleQuestionFooter(true); // Enable Question Footer
+      ToggleIfSmallScreen(header, false); //Hide On small screens
       break;
     case "Score":
       ToggleElement(scorePage, true);
@@ -114,6 +117,13 @@ function LoadPage(page) {
   }
 }
 
+function ToggleIfSmallScreen(element, status) {
+  if (status) {
+    element.classList.remove("hideOnSmallScreens");
+  } else {
+    element.classList.add("hideOnSmallScreens");
+  }
+}
 function HideAllPages() {
   ToggleElement(homePage, false);
   ToggleElement(questionPage, false);
@@ -142,7 +152,6 @@ function ClearScoresConfirmation() {
 
 //Start The Quiz when button pressed
 function StartQuiz() {
-  //Initilize Score
   answer = 0;
   skipped = 0;
   incorrect = 0;
@@ -170,10 +179,10 @@ function LoadQuestion() {
 
 function BuildQuestion(question) {
   //Set Question Text to Question
-  var thisQuestion = currentQuestion;
-  var count = 0;
+  let thisQuestion = currentQuestion;
+  let count = 0;
   ToggleElement(skipQuestionButton, false);
-  var tick = setInterval(function () {
+  let tick = setInterval(function () {
     if (thisQuestion != currentQuestion) {
       clearInterval(tick);
     }
@@ -183,7 +192,7 @@ function BuildQuestion(question) {
       clearInterval(tick);
     }
   }, 1000);
-  questionText.textContent = question.question;
+  questionText.innerHTML = question.question;
   var shuffledAnswers = ShuffleArray(question.allAnswers);
 
   for (let i = 0; i < answerButtons.length; i++) {

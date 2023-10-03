@@ -3,7 +3,7 @@
 /*===========================================[ Global ]===============================================*/
 /*====================================================================================================*/
 :root {
-  /*Color Pallete*/
+  /*Color Pallets*/
 
   --mainColor: #f0dc55;
   --mainColorAlt: #ffe945;
@@ -47,7 +47,6 @@ header {
   justify-content: space-between;
   align-items: stretch;
   margin: 0px;
-  gap: 100px;
 }
 
 header * {
@@ -62,7 +61,11 @@ header img {
 header nav {
   align-self: center;
 }
-
+.linkStyle {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+}
 /*Style Header and Footer*/
 .linkStyle a {
   position: relative;
@@ -71,6 +74,8 @@ header nav {
   margin: 50px;
   color: var(--lightColor);
   transition: all ease-in 0.5s;
+  text-wrap: nowrap;
+  text-align: center;
 }
 .linkStyle a:hover {
   color: var(--mainColor);
@@ -199,6 +204,9 @@ section p {
   background-size: cover;
 }
 
+#Why-Javascript p {
+  text-shadow: var(--mainColor) 1px 0px 10px;
+}
 #Why-Javascript div {
   display: flex;
   flex-direction: column;
@@ -254,7 +262,7 @@ section p {
   justify-content: center;
   align-items: center;
   flex: 1;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #Question figure button {
@@ -267,9 +275,11 @@ section p {
   max-height: 100%;
   border: 10px solid var(--darkColorShade1);
   border-radius: 50px;
+  width: 100%;
 }
 #Question h2 {
   padding: 30px;
+  height: 175px;
   text-align: center;
 }
 
@@ -294,7 +304,7 @@ section p {
   gap: 10px;
   width: 100%;
   margin: 10px 0px;
-  height: 150px;
+  height: 25%;
   text-align: start;
   padding: 10px 50px;
   font-size: 3rem;
@@ -327,7 +337,7 @@ section p {
 
 #Score .score-display,
 #HighScore .high-score-display {
-  height: 750px;
+  height: 70%;
   width: 750px;
   background-color: var(--darkColorShade2);
   display: flex;
@@ -517,10 +527,6 @@ section p {
   position: absolute;
   right: -75px;
 }
-
-#Exit-Quiz-Button {
-  margin: 50px auto;
-}
 /*====================================================================================================*/
 /*=============================================[ Study ]==============================================*/
 /*====================================================================================================*/
@@ -577,11 +583,16 @@ footer {
   left: 0;
 }
 .footer-links {
-  margin: 0px 200px;
+  margin: 0px;
   padding: 0px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: stretch;
+  width: 100%;
+  gap: 20px;
+}
+.footer-links * {
+  flex: 1;
 }
 .footer-links ul {
   display: flex;
@@ -593,12 +604,17 @@ footer ul {
   align-self: center;
 }
 .footer-links ul a {
-  font-size: 3rem;
+  font-size: 2rem;
   text-decoration: none;
+  margin: 0px;
 }
 footer img {
   bottom: 0;
-  height: 200px;
+  max-height: 200px;
+}
+
+.bold {
+  color: var(--mainColor);
 }
 /*TODO Effect Applies When Text Fades Away*/
 /* 
@@ -611,3 +627,190 @@ footer h3 {
 /*======================================================================*/
 /*============================= Media Queries ==========================*/
 /*======================================================================*/
+
+@media screen and (max-width: 1700px) {
+  :root {
+    font-size: 8px;
+  }
+
+  footer img {
+    align-self: center;
+    width: 30%;
+    height: 100%;
+  }
+
+  .footer-social {
+    gap: 10%;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+  }
+  .footer-links .linkStyle a {
+    font-size: 3rem;
+    margin: 0px;
+  }
+  .footer-links img {
+    order: 1;
+  }
+  #Score .score-display,
+  #HighScore .high-score-display {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--darkColorShade3);
+    display: flex;
+    flex-direction: column;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 50px 30%;
+  }
+  #HighScore h2 {
+    margin-top: 20%;
+    margin-left: 50px;
+  }
+  #HighScore #highscores div {
+    margin: 0px;
+    padding: 0px 10px;
+  }
+  #Timer {
+    display: flex;
+    width: 30%;
+    transform: translate(-50px, 35px);
+    margin: auto;
+    background-color: var(--lighterColor);
+    border-radius: 50px;
+    position: absolute;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #Timer * {
+    text-wrap: nowrap;
+    font-size: 3rem;
+    padding: 20px;
+  }
+
+  #Question {
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  header img {
+    width: 700px;
+  }
+  header {
+    flex-direction: column;
+  }
+  header .linkStyle {
+    background-color: var(--darkColorShade2);
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+  }
+  header .linkStyle a {
+    margin: 0;
+  }
+
+  #Page_Highscores {
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #How-To-Play {
+    flex-direction: column-reverse;
+    height: 100%;
+  }
+
+  header img {
+    width: 130%;
+  }
+  #Call-To-Action,
+  #How-To-Play,
+  #Why-Javascript {
+    height: 100vh;
+    width: 100%;
+    padding: 15px 5px;
+  }
+  #Call-To-Action p,
+  #How-To-Play Div,
+  #Why-Javascript p {
+    padding: 5px;
+  }
+  :root {
+    font-size: 6px;
+  }
+  footer img {
+    align-self: center;
+    width: 50%;
+    height: 100%;
+  }
+  #Timer {
+    display: flex;
+    transform: translate(0px, -32px);
+    width: 80%;
+    margin: auto;
+    background-color: var(--lighterColor);
+    border-radius: 50px;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+  }
+  #Timer * {
+    text-wrap: nowrap;
+    font-size: 3rem;
+    padding: 20px;
+  }
+  #Question figure {
+    width: 100%;
+    overflow: visible;
+  }
+  #Question figure img {
+    width: 100%;
+  }
+  #Question h2 {
+    height: 50px;
+    padding: 5px;
+  }
+  #Alert {
+    border-radius: 50px;
+    text-wrap: nowrap;
+    top: 5px; /* Home: 215 | Question*/
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .button-style {
+    font-size: 3rem;
+  }
+  .question-content {
+    margin: 0px;
+    padding: 20px;
+    flex-direction: column-reverse;
+    gap: 5px;
+  }
+  .question-content div {
+    justify-content: start;
+  }
+  .question-content div button {
+    height: auto;
+    margin: 5px;
+  }
+  .hideOnSmallScreens {
+    height: 50px;
+  }
+  .hideOnSmallScreens img {
+    visibility: hidden;
+  }
+  #Score .buttons {
+    margin: 25px;
+  }
+}
+@media screen and (max-width: 400px) {
+  :root {
+    font-size: 4px;
+  }
+}
