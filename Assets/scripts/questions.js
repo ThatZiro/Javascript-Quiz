@@ -3,7 +3,7 @@ const javascriptQuestions = [
     question: "What is the output of typeof null in JavaScript?",
     correctAnswer: "object",
     allAnswers: ["number", "string", "boolean", "object"],
-    image: "./Assets/images/Questions/question-1.png",
+    image: "./Assets/images/Questions/question-1-fix.png",
   },
   {
     question:
