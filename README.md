@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ThatZiro/Portfolio">
+  <a href="https://github.com/ThatZiro/Javascript-Quiz/">
     <img src="./README_Assets/README-Logo.png" alt="Logo" width="160" height="160">
   </a>
 
