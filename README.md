@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ThatZiro/Portfolio">
+  <a href="https://github.com/ThatZiro/Javascript-Quiz/">
     <img src="./README_Assets/README-Logo.png" alt="Logo" width="160" height="160">
   </a>
 
@@ -65,11 +65,11 @@
 
 <details>
   <summary  style="font-size:18px">Responsive Layouts</summary>
-  <img src="./README_Assets/README-phone-preview.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-phone-preview.png" alt="Logo" width="250">
 </details>
 <details>
   <summary  style="font-size:18px">Flow Chart</summary>
-  <img src="./README_Assets/README-Chart-1.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-Chart-1.png" alt="Logo" width="500">
 </details>
 <details>
   <summary style="font-size:18px">Layout Design</summary>
@@ -92,15 +92,15 @@
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/ThatZiro/Portfolio.svg?style=for-the-badge
-[contributors-url]: https://github.com/ThatZiro/Portfolio/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ThatZiro/Portfolio.svg?style=for-the-badge
-[forks-url]: https://github.com/ThatZiro/Portfolio/network/members
-[stars-shield]: https://img.shields.io/github/stars/ThatZiro/Portfolio.svg?style=for-the-badge
-[stars-url]: https://github.com/ThatZiro/Portfolio/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ThatZiro/Portfolio.svg?style=for-the-badge
-[issues-url]: https://github.com/ThatZiro/Portfolio/issues
-[license-shield]: https://img.shields.io/github/license/ThatZiro/Portfolio.svg?style=for-the-badge
-[license-url]: https://github.com/ThatZiro/Portfolio/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ThatZiro/Javascript-Quiz.svg?style=for-the-badge
+[contributors-url]: https://github.com/ThatZiro/Javascript-Quiz/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ThatZiro/Javascript-Quiz.svg?style=for-the-badge
+[forks-url]: https://github.com/ThatZiro/Javascript-Quiz/network/members
+[stars-shield]: https://img.shields.io/github/stars/ThatZiro/Javascript-Quiz.svg?style=for-the-badge
+[stars-url]: https://github.com/ThatZiro/Javascript-Quiz/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ThatZiro/Javascript-Quiz.svg?style=for-the-badge
+[issues-url]: https://github.com/ThatZiro/Javascript-Quiz/issues
+[license-shield]: https://img.shields.io/github/license/ThatZiro/Javascript-Quiz.svg?style=for-the-badge
+[license-url]: https://github.com/ThatZiro/Javascript-Quiz/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
