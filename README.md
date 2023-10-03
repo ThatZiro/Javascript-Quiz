@@ -65,11 +65,11 @@
 
 <details>
   <summary  style="font-size:18px">Responsive Layouts</summary>
-  <img src="./README_Assets/README-phone-preview.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-phone-preview.png" alt="Logo" width="250">
 </details>
 <details>
   <summary  style="font-size:18px">Flow Chart</summary>
-  <img src="./README_Assets/README-Chart-1.png" alt="Logo" width="1000">
+  <img src="./README_Assets/README-Chart-1.png" alt="Logo" width="500">
 </details>
 <details>
   <summary style="font-size:18px">Layout Design</summary>
