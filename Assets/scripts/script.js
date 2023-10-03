@@ -84,7 +84,7 @@ let highscores = [];
 // == Load Page ==
 function LoadPage(page) {
   HideAllPages();
-  ToggleElement(nav, true, "flex"); // Force Nav on all pages
+  ToggleElementSpecial(nav, true, "flex"); // Force Nav on all pages
   ToggleQuestionFooter(false); // Disable Question Footer
   ToggleIfSmallScreen(header, true);
   clearTimer = true;
@@ -104,7 +104,7 @@ function LoadPage(page) {
       break;
     case "Highscores":
       ToggleElement(highscoresPage, true);
-      ToggleElement(highscoresDisplay, true, "flex");
+      ToggleElementSpecial(highscoresDisplay, true, "flex");
       ToggleElement(clearScoresDisplay, false);
       BuildHighScoreDisplay();
       break;
@@ -145,7 +145,7 @@ function LoadHeader(text) {
 }
 
 function ClearScoresConfirmation() {
-  ToggleElement(clearScoresDisplay, true, "flex");
+  ToggleElementSpecial(clearScoresDisplay, true, "flex");
   ToggleElement(highscoresDisplay, false);
 }
 // === Event Handlers ===
@@ -193,11 +193,12 @@ function BuildQuestion(question) {
     }
   }, 1000);
   questionText.innerHTML = question.question;
-  var shuffledAnswers = ShuffleArray(question.allAnswers);
+  console.log(question.question);
+  let shuffledAnswers = ShuffleArray(question.allAnswers);
 
   for (let i = 0; i < answerButtons.length; i++) {
-    var a = answerButtons[i];
-    var questionAnswer = shuffledAnswers[i];
+    let a = answerButtons[i];
+    let questionAnswer = shuffledAnswers[i];
     a.children[1].textContent = questionAnswer;
     a.setAttribute("data-answer", questionAnswer);
   }
@@ -212,13 +213,7 @@ function BuildQuestion(question) {
 }
 
 function CheckAnswer(event) {
-  var choice = event.dataset.answer;
-  console.log(
-    "Choice : " +
-      event.dataset.answer +
-      " | Correct " +
-      currentQuestion.correctAnswer
-  );
+  let choice = event.dataset.answer;
   answer++;
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
@@ -236,7 +231,7 @@ function CheckAnswer(event) {
 }
 
 function NextQuestion(_choice) {
-  var questionResult = {
+  let questionResult = {
     question: currentQuestion,
     choice: _choice,
   };
@@ -259,7 +254,7 @@ function ExitQuiz() {
 
 function BuildScorePage() {
   //Show Form
-  ToggleElement(scoreForm, true, "flex");
+  ToggleElementSpecial(scoreForm, true, "flex");
   ToggleElement(scoreSubmittedText, false);
   //Set answered number
   answeredNumber.textContent = answeredQuestion.length;
@@ -309,7 +304,7 @@ function StartTimer(time) {
   clearTimer = false;
   timer = time;
   timerText.textContent = TimerToString(timer);
-  var tick = setInterval(function () {
+  let tick = setInterval(function () {
     timer--;
     timerText.textContent = TimerToString(timer);
     if (clearTimer) {
@@ -360,9 +355,9 @@ function SubmitHighscore(event) {
   //Hide Form
   ToggleElement(scoreForm, false);
   ToggleElement(scoreSubmittedText, true);
-  var name = nameInput.value;
+  let name = nameInput.value;
   nameInput.value = "";
-  var newHighscore = {
+  let newHighscore = {
     name: name,
     score: score,
   };
@@ -388,7 +383,7 @@ function ClearHighscores() {
 }
 
 function AddData(scoreData) {
-  var jsonData = JSON.stringify(scoreData);
+  let jsonData = JSON.stringify(scoreData);
   localStorage.setItem("highscores", jsonData);
 }
 
@@ -397,8 +392,8 @@ function ClearData() {
 }
 
 function GetData() {
-  var data = localStorage.getItem("highscores");
-  var array = [];
+  let data = localStorage.getItem("highscores");
+  let array = [];
   if (JSON.parse(data)) {
     return JSON.parse(data);
   } else {
@@ -417,15 +412,15 @@ function ToggleQuestionFooter(status) {
   }
 }
 
-// === Untility ===
+// === Utility ===
 function ShowMessage(text, color, background, time) {
   if (alert.style.display !== "none") {
     return;
   }
   ToggleElement(alert, true);
   alert.textContent = text;
-  var textColor = GetCSSVariable(color);
-  var backgroundColor = GetCSSVariable(background);
+  let textColor = GetCSSVariable(color);
+  let backgroundColor = GetCSSVariable(background);
   alert.setAttribute(
     "style",
     `color:${textColor}; background-color:${backgroundColor}`
@@ -449,9 +444,9 @@ function ToggleElement(element, status) {
   } else {
     element.setAttribute("style", "display: none");
   }
-  ``;
 }
-function ToggleElement(element, status, string) {
+
+function ToggleElementSpecial(element, status, string) {
   if (status) {
     if (string) {
       element.setAttribute("style", `display: ${string}`);
@@ -464,9 +459,9 @@ function ToggleElement(element, status, string) {
 }
 
 function ShuffleArray(_array) {
-  var array = [..._array];
-  var newArray = [];
-  var count = array.length;
+  let array = [..._array];
+  let newArray = [];
+  let count = array.length;
   for (let i = 0; i < count; i++) {
     let r = Math.floor(Math.random() * array.length);
     newArray.push(array[r]);
@@ -478,8 +473,8 @@ function TimerToString(time) {
   if (time < 0) {
     time = 0;
   }
-  var m = Math.floor(time / 60);
-  var s = time % 60;
+  let m = Math.floor(time / 60);
+  let s = time % 60;
   if (m > 0) {
     return `${m}m ${s}s`;
   } else {
@@ -488,7 +483,7 @@ function TimerToString(time) {
 }
 
 function GetCSSVariable(variable) {
-  var rs = getComputedStyle(root);
+  let rs = getComputedStyle(root);
   return rs.getPropertyValue(variable);
 }
 //====================================================================================================//
