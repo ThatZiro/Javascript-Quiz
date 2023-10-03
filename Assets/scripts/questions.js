@@ -7,7 +7,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "In <span class='bold'><span class='bold'>this</span></span> JavaScript code block, what is the 'let' keyword used for?",
+      "In <span class='bold'>this</span> JavaScript code block, what is the 'let' keyword used for?",
     correctAnswer: "Declaring a variable with block scope.",
     allAnswers: [
       "Creating a function.",
@@ -19,7 +19,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What does the code inside <span class='bold'><span class='bold'>this</span></span> JavaScript 'for' loop do?",
+      "What does the code inside <span class='bold'>this</span> JavaScript 'for' loop do?",
     correctAnswer: "It logs numbers from 1 to 5 to the console.",
     allAnswers: [
       "It multiplies two numbers together.",
@@ -31,7 +31,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'return' statement in <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
+      "What is the purpose of the 'return' statement in <span class='bold'>this</span> JavaScript code?",
     correctAnswer: "It returns a value from a function.",
     allAnswers: [
       "It breaks out of a loop.",
@@ -43,14 +43,14 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What will be the value of 'result' after executing <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
+      "What will be the value of 'result' after executing <span class='bold'>this</span> JavaScript code?",
     correctAnswer: "15",
     allAnswers: ["10", "5", "15", "20"],
     image: "./Assets/images/Questions/question-5.png",
   },
   {
     question:
-      "What does the 'if' statement in <span class='bold'><span class='bold'>this</span></span> JavaScript code block check for?",
+      "What does the 'if' statement in <span class='bold'>this</span> JavaScript code block check for?",
     correctAnswer: "Whether 'age' is greater than or equal to 18.",
     allAnswers: [
       "Whether 'name' is defined.",
@@ -62,7 +62,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'addEventListener' method in <span class='bold'><span class='bold'>this</span></span> JavaScript code?",
+      "What is the purpose of the 'addEventListener' method in <span class='bold'>this</span> JavaScript code?",
     correctAnswer: "It attaches an event handler to an HTML element.",
     allAnswers: [
       "It creates a new element in the DOM.",
@@ -74,14 +74,14 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What will be the value of 'total' after <span class='bold'><span class='bold'>this</span></span> JavaScript code is executed?",
+      "What will be the value of 'total' after <span class='bold'>this</span> JavaScript code is executed?",
     correctAnswer: "15",
     allAnswers: ["10", "5", "15", "20"],
     image: "./Assets/images/Questions/question-8.png",
   },
   {
     question:
-      "What is the role of 'console.log()' in <span class='bold'><span class='bold'>this</span></span> JavaScript code block?",
+      "What is the role of 'console.log()' in <span class='bold'>this</span> JavaScript code block?",
     correctAnswer: "It prints 'Hello, world!' to the console.",
     allAnswers: [
       "It defines a variable.",
@@ -104,7 +104,7 @@ const javascriptQuestions = [
   },
   {
     question:
-      "What is the purpose of the 'class' attribute in <span class='bold'><span class='bold'>this</span></span> HTML code?",
+      "What is the purpose of the 'class' attribute in <span class='bold'>this</span> HTML code?",
     correctAnswer: "It specifies a CSS class to apply styling to the element.",
     allAnswers: [
       "It defines a JavaScript class.",
