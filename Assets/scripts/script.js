@@ -164,7 +164,7 @@ function LoadQuestion() {
     BuildQuestion(currentQuestion);
   } else {
     console.log("We are out of Questions"); //
-    LoadPage("Result");
+    timer = 0;
   }
 }
 
@@ -204,7 +204,12 @@ function BuildQuestion(question) {
 
 function CheckAnswer(event) {
   var choice = event.dataset.answer;
-  console.log(event.dataset.answer);
+  console.log(
+    "Choice : " +
+      event.dataset.answer +
+      " | Correct " +
+      currentQuestion.correctAnswer
+  );
   answer++;
   //Check Answer based on current question
   if (choice == currentQuestion.correctAnswer) {
@@ -435,6 +440,7 @@ function ToggleElement(element, status) {
   } else {
     element.setAttribute("style", "display: none");
   }
+  ``;
 }
 function ToggleElement(element, status, string) {
   if (status) {

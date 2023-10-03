@@ -167,7 +167,7 @@ const javascriptQuestions = [
       "It will create a new HTML element.",
       "It will display 'Result: 15' in the HTML element with ID 'output'.",
       "It will trigger a function when a button is clicked.",
-      "It will display 'Result: 28' in the HTML element with ID 'result'.",
+      "It will display 'Result: 28' in the HTML element with ID 'output'.",
     ],
     image: `./Assets/images/Questions/question-16.png`,
   },

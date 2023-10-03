@@ -586,6 +586,7 @@ footer {
 .footer-links ul {
   display: flex;
   justify-content: space-around;
+  cursor: pointer;
 }
 footer ul {
   flex-grow: 1;
